@@ -1,0 +1,24 @@
+<div class="row">
+  <div class="col-md-12">
+    <div class="filter-edit-cnt">
+      <div class="beam-control">
+        <div class="name-filter">
+          <span class="badge badge-danger">
+            ID:{{attraction.id}}
+          </span>
+          {{attraction.name}}
+        </div>
+        <button type="button" class="btn btn-danger" (click)="beforeDeleteAttraction(attraction)">
+          <i class="fas fa-minus"></i>
+        </button>
+        <div class="btns">
+          <button type="button" class="btn btn-primary" (click)="updateAttraction()">
+            <i class="fas fa-edit"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<ng-template #editAdd></ng-template>
+<ng-template #confirm></ng-template>

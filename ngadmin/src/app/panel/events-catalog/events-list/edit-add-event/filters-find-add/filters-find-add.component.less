@@ -1,0 +1,106 @@
+.scroll-area {
+  overflow: hidden;
+  max-height: 280px;
+  position: relative;
+  padding-right: 15px;
+}
+
+.scroll-area-woj {
+  overflow: hidden;
+  max-height: 340px;
+  position: relative;
+  padding-right: 15px;
+}
+
+.row.row-filters {
+  .region-element {
+    padding: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    width: 100%;
+
+    .name {
+      width: calc(100% - 120px);
+      cursor: pointer;
+
+      span {
+        text-decoration: underline;
+      }
+    }
+
+    .action-btns {
+      margin-left: 10px;
+      width: 110px;
+    }
+  }
+
+  .region-element.el-added {
+    color: #777777;
+    font-size: 1rem;
+  }
+
+  .region-element.el-added .name::after {
+    content: "dodany";
+    display: block;
+    width: 100%;
+    font-size: 0.7rem;
+    color: #F00;
+    text-decoration: none;
+  }
+
+  .region-element.open-els {
+    color: #FFF;
+    background-color: rgb(0, 54, 155);
+  }
+
+
+  .element-sub {
+
+    padding: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    width: 100%;
+
+    .name {
+      width: calc(100% - 70px);
+      cursor: pointer;
+
+      span {
+        text-decoration: underline;
+      }
+    }
+
+    .action-btns {
+      margin-left: 10px;
+      width: 60px;
+    }
+  }
+
+  .element-sub.el-added {
+    color: #777777;
+    font-size: 1rem;
+  }
+
+  .element-sub.el-added .name::after {
+    content: "dodany";
+    display: block;
+    width: 100%;
+    font-size: 0.7rem;
+    color: #F00;
+    text-decoration: none;
+  }
+
+  h4.title {}
+
+  h4.title::after {
+    content: "";
+    display: block;
+    height: 1px;
+    background-color: #000;
+  }
+
+}

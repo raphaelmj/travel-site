@@ -1,0 +1,23 @@
+extends ../layouts/layout.pug
+
+block header
+    include ../partials/banner-content.pug
+    include ../partials/submenu.pug
+    
+block content
+    .double-container.form-view
+        .row
+            .col-left-double
+                .container
+                    .row
+                        .col-desc
+                            if(link.content)
+                                | !{link.content}
+
+            .col-right-double
+                .right-content-db
+                    include ../partials/partners.pug
+
+block footer
+    include ../partials/contact-section.pug
+    include ../partials/pswp.pug

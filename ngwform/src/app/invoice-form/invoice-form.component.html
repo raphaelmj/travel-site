@@ -1,0 +1,73 @@
+<form [formGroup]="formG" (submit)="sendForm()">
+  <div class="form-container form-rel-cnt">
+    <div class="loading-over" *ngIf="formActiveStatus=='SENDING' || formActiveStatus=='SENT'"
+      (click)="clearStatusCloud()">
+      <img [src]="apiUrl+'/img/loading.gif'" *ngIf="formActiveStatus=='SENDING'" alt="">
+      <h2 *ngIf="formActiveStatus=='SENT'" (click)="clearStatusCloud()">
+        Wiadomość została wysłana
+      </h2>
+    </div>
+    <div class="alert-valiadation" *ngIf="isAlert">
+      Proszę wypełnij wymagane pola.
+    </div>
+    <div class="row-input">
+      <div class="col-input required-field">
+        <input type="text" class="data-input" formControlName="name" placeholder="Imię i Nazwisko">
+      </div>
+    </div>
+    <div class="row-input">
+      <div class="col-input required-field">
+        <input type="text" class="data-input" formControlName="email" placeholder="Email">
+      </div>
+    </div>
+    <div class="row-input">
+      <div class="col-input required-field">
+        <input type="text" class="data-input" formControlName="phone" placeholder="Telefon">
+      </div>
+    </div>
+    <div class="row-input">
+      <div class="col-input">
+        <input type="text" class="data-input" formControlName="number" placeholder="Numer katalogowy">
+        <app-find-event [events]="events" (emitSet)="setEvNumber($event)"></app-find-event>
+      </div>
+    </div>
+    <div class="row-input">
+      <div class="col-input">
+        <textarea formControlName="description" placeholder="Wiadomość"></textarea>
+      </div>
+    </div>
+    <div class="row-input">
+      <div class="col-input col-relative col-input-files" [ngClass]="{'has-no-doc': !hasDoc}">
+
+        <input type="file" class="file-input" #fileInput name="doc" [ngStyle]="{'opacity': 0}" [accept]="mimeTypes"
+          (change)="onFileChange($event)">
+        <div class="over-col-rel">
+          <button type="button" class="button-file" (click)="clickOpenAttach()">Wybierz plik</button>
+          {{attachName}}
+          <div class="mime-types">
+            <span class="types-list">
+              {{mimeTypes}}
+            </span>
+          </div>
+        </div>
+        <div class="too-large-file" *ngIf="toLargeFile">
+          Plik zbyt duży maksymalna wielkość to 1MB
+        </div>
+      </div>
+    </div>
+
+    <div class="row-input">
+      <div class="col-input">
+        <app-custom-checkbox [labelText]="regDesc" [labelLink]="''" [selectBool]="formG.get('regulation').value"
+          [errorBool]="errorBool" (emitChange)="changeReg($event)">
+        </app-custom-checkbox>
+      </div>
+    </div>
+
+    <div class="row-input">
+      <div class="col-input">
+        <button class="send-btn">Wyślij</button>
+      </div>
+    </div>
+  </div>
+</form>

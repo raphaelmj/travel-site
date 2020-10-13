@@ -1,0 +1,19 @@
+<div class="row">
+  <div class="col-md-12">
+    <button type="button" class="btn btn-primary btn-lg" (click)="addHp()">
+      Dodaj <i class="fas fa-plus"></i>
+    </button>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-12">
+    <hr>
+  </div>
+</div>
+<div class="row" id="sortHps">
+  <div class="col-md-3" *ngFor="let h of hps">
+    <app-home-page-row [hp]="h" (editStart)="openEdit($event)" (deleteStart)="startDelete($event)"></app-home-page-row>
+  </div>
+</div>
+<ng-template #editTemp></ng-template>
+<ng-template #remove></ng-template>

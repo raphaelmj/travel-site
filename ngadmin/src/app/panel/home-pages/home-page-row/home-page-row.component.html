@@ -1,0 +1,18 @@
+<div class="col-box">
+  <h2 class="title-bx" [ngStyle]="{'color': '#'+hp.color}">{{hp.title}}</h2>
+  <div class="image-bx-el">
+    <img [src]="apiUrl+hp.image" class="img-fluid" [ngStyle]="{'box-shadow': '20px 70px 0 #'+hp.color}">
+  </div>
+  <div class="more-btn">
+
+    <a [href]="" (click)="$event.preventDefault()" target="_self">więcej</a>
+  </div>
+</div>
+<div class="btns">
+  <button type="button" class="btn btn-warning" (click)="openEdit()">
+    <i class="fas fa-edit"></i>
+  </button>
+  <button type="button" class="btn btn-danger" (click)="deletePromo()">
+    <i class="fas fa-minus"></i>
+  </button>
+</div>

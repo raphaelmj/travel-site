@@ -1,0 +1,8 @@
+<li>
+  {{link.title}} <button type="button" class="btn btn-sm btn-warning" (click)="addNewParentComponent($event)">+</button>
+  <ul cdkDropList (cdkDropListDropped)="drop($event)" *ngIf="link.children.length>0">
+    <div *ngFor="let item of link.children" cdkDrag>
+      <app-links-custom-tree [(link)]="item" [parent]="link" (emitAddNew)="addNewParentComponent($event)"></app-links-custom-tree>
+    </div>
+  </ul>
+</li>

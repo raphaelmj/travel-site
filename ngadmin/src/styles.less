@@ -1,0 +1,169 @@
+/* You can add global styles to this file, and also import other style files */
+@import './assets/colors.less';
+@import '~angular-tree-component/dist/angular-tree-component.css';
+@import (css) url('https://fonts.googleapis.com/css?family=Poppins:300,300i,400,400i,500,500i,600,600i,700,700i,900,900i');
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: Roboto,
+    "Helvetica Neue",
+    sans-serif;
+}
+
+
+button.btn-full-width {
+  width: 100%;
+}
+
+@brown: #7c523a;
+
+.ck.ck-editor {
+  font-family: 'Poppins', sans-serif;
+
+  strong,
+  b {
+    color: @brown;
+  }
+
+  h4 {
+    font-weight: 900;
+    font-size: 1.4rem;
+    color: @brown;
+  }
+
+  h3 {
+    font-weight: 900;
+    font-size: 1.7rem;
+    color: @brown;
+  }
+
+  h2 {
+    font-weight: 900;
+    font-size: 2rem;
+    color: @brown;
+  }
+
+  ul {
+    li {
+      list-style: url('~/assets/images/point.png');
+    }
+  }
+}
+
+//@ckeditor/ckeditor5-editor-inline
+
+.example-full-width {
+  width: 100%;
+}
+
+
+h4.geo-title {
+  margin: 10px 0 10px 0;
+  color: @gray;
+  font-size: 1.6rem;
+  width: 270px;
+}
+
+h5.geo-title {
+  margin: 10px 0 10px 0;
+  color: @gray;
+  font-size: 1.4rem;
+  width: 270px;
+}
+
+
+.filter-edit-cnt {
+  padding: 10px 10px 10px 10px;
+  border: 1px solid @gray;
+  width: calc(~"(100% - 22px)");
+  margin-bottom: 10px;
+
+  .beam-control {
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: center;
+
+    .name-filter {
+      margin-left: 16px;
+      width: 320px;
+      font-size: 1rem;
+
+      span {
+        margin-right: 10px;
+        font-size: 0.85rem;
+      }
+    }
+
+    .btns {
+      margin-left: 16px;
+
+      button {
+        margin-right: 10px;
+      }
+    }
+  }
+
+  .edit-form {}
+
+}
+
+.row.hidden-row {
+  display: none;
+}
+
+
+.add-filter-title-cnt {
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+
+  button {
+    margin-left: 16px;
+  }
+}
+
+.row-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  grid-gap: 16px;
+
+  @media (max-width:1399.98px) {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  @media (max-width:1199.98px) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  @media (max-width:991.98px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @media (max-width:767.98px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @media (max-width:540px) {
+    grid-template-columns: repeat(1, 1fr);
+  }
+
+  .col-g {}
+}
+
+.badge {
+  font-weight: 400;
+}
+
+h4.title {}
+
+h4.title::after {
+  content: "";
+  display: block;
+  height: 1px;
+  background-color: #000;
+}

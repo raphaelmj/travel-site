@@ -1,0 +1,51 @@
+<div class="row">
+  <div class="col-md-12">
+    <div class="filter-edit-cnt">
+      <div class="beam-control">
+        <div class="name-filter">
+          <span class="badge badge-danger">
+            ID:{{region.id}}
+          </span>
+          {{region.name}}
+        </div>
+        <div class="btns">
+          <button type="button" class="btn btn-primary" (click)="editRegionOpen()">
+            <i class="fas fa-edit"></i>
+          </button>
+          <button type="button" class="btn btn-danger">
+            <i class="fas fa-minus"></i>
+          </button>
+          <button type="button" class="btn btn-success" (click)="hideShowCities()">
+            <i class="fas fa-angle-right" *ngIf="hideCities"></i>
+            <i class="fas fa-angle-down" *ngIf="!hideCities"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+    <div class="row" [ngClass]="{'hidden-row': hideCities}">
+      <div class="col-md-11 offset-md-1">
+        <div class="add-filter-title-cnt">
+          <h5 class="geo-title"><i class="fas fa-city"></i> Miasta regionu</h5>
+          <button type="button" class="btn btn-primary" (click)="addCity(region)">
+            <i class="fas fa-plus"></i>
+          </button>
+        </div>
+        <app-city-row *ngFor="let c of region.cities; let i=index" [city]="c" [region]="region"></app-city-row>
+      </div>
+    </div>
+    <div class="row" [ngClass]="{'hidden-row': hideCities}">
+      <div class="col-md-11 offset-md-1">
+        <div class="add-filter-title-cnt">
+          <h5 class="geo-title"><i class="fas fa-dice-d6"></i> Atrakcje regionu poza miastami</h5>
+          <button type="button" class="btn btn-primary" (click)="addAttraction(region)">
+            <i class="fas fa-plus"></i>
+          </button>
+        </div>
+        <app-region-attraction-row *ngFor="let a of region.regionAttractions; let i=index" [attraction]="a"
+          [region]="region">
+        </app-region-attraction-row>
+      </div>
+    </div>
+  </div>
+</div>
+<ng-template #editAdd></ng-template>

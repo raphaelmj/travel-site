@@ -1,0 +1,23 @@
+<div class="row">
+  <div class="col-md-6">
+    <ngfFormData [files]="files" [(FormData)]="formData" postName="file"></ngfFormData>
+    <div class="drop-area" ngfDrop selectable="1" multiple="1" [(files)]="files"
+      [ngClass]="{'goodDragClass':validComboDrag, 'badDragClass':invalidComboDrag}">
+      <span class="text-muted">Upuść pliki</span>
+    </div>
+    <button *ngIf="files" class="btn btn-warning d-block w-100" (click)="uploadFiles(files)">Wyślij pliki</button>
+  </div>
+  <div class="col-md-6">
+    <div class="row" *ngFor="let f of filesUF;index as i">
+      <div class="col-md-10">
+        <h6 class="text-muted">{{f.name}}</h6>
+      </div>
+      <div class="col-md-2">
+        <button class="btn btn-sm btn-danger" (click)="removeFileFromCollection(i)">
+          <i class="fas fa-minus"></i>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+<hr>

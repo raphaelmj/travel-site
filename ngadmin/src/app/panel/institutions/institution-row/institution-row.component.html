@@ -1,0 +1,29 @@
+<div class="row-in">
+  <div class="info-in">
+    <h2>
+      {{inst.name}}
+    </h2>
+  </div>
+  <div class="tour-target">
+    <i class="fas fa-map-marker-alt"></i>
+    {{inst.tourTarget}}
+  </div>
+  <div class="desc-in">
+    <span [innerHtml]="inst.description"></span>
+  </div>
+  <div class="btns">
+    <button type="button" class="btn btn-warning" (click)="openEdit()">
+      <i class="fas fa-edit"></i>
+    </button>
+    <button type="button" class="btn btn-danger" (click)="deletePromo()">
+      <i class="fas fa-minus"></i>
+    </button>
+
+    <button type="button" class="btn btn-success" *ngIf="inst.status" (click)="changeStatus(false)">
+      <i class="fas fa-check"></i>
+    </button>
+    <button type="button" class="btn btn-danger" *ngIf="!inst.status" (click)="changeStatus(true)">
+      <i class="fas fa-ban"></i>
+    </button>
+  </div>
+</div>

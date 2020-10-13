@@ -1,0 +1,27 @@
+<div class="rotor-screen">
+  <div class="shadow-over"></div>
+  <div class="slide">
+    <img [src]="apiUrl+slide.image" class="img-fluid">
+  </div>
+  <h2 class="title-big">{{slide.title}}</h2>
+  <h3 class="title-small">{{slide.subTitle}}</h3>
+  <a href="#" class="btn-link" (click)="$event.preventDefault()">
+    {{slide.linkTitle}}
+  </a>
+  <div class="over-all">
+    <button type="button" class="btn btn-warning btn-lg edit-bt" (click)="editSlide()">
+      <i class="fas fa-edit"></i>
+    </button>
+    <button type="button" class="btn btn-danger btn-lg remove-bt" (click)="beforeRemoveSlide()">
+      <i class="fas fa-minus"></i>
+    </button>
+    <button class="status-bt btn btn-lg btn-success" (click)="changeStatus(false)" *ngIf="slide.status">
+      <i class="fas fa-check"></i>
+    </button>
+    <button class="status-bt btn btn-lg btn-danger" (click)="changeStatus(true)" *ngIf="!slide.status">
+      <i class="fas fa-ban"></i>
+    </button>
+  </div>
+</div>
+<ng-template #editTemp></ng-template>
+<ng-template #remove></ng-template>

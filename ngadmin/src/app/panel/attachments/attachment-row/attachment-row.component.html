@@ -1,0 +1,29 @@
+<div class="attach-cnt">
+  <div class="title">
+    <h4>
+      {{attachment.groupName}}
+    </h4>
+  </div>
+  <div class="count-files">
+    Ilość plików:
+    <span class="badge badge-info">
+      {{attachment.files?.length}}
+    </span>
+  </div>
+  <div class="btns">
+    <button type="button" class="btn btn-warning" (click)="openEdit()">
+      <i class="fas fa-edit"></i>
+    </button>
+    <button type="button" class="btn btn-danger" (click)="deletePromo()">
+      <i class="fas fa-minus"></i>
+    </button>
+
+    <button type="button" class="btn btn-success" *ngIf="attachment.status" (click)="changeStatus(false)">
+      <i class="fas fa-check"></i>
+    </button>
+    <button type="button" class="btn btn-danger" *ngIf="!attachment.status" (click)="changeStatus(true)">
+      <i class="fas fa-ban"></i>
+    </button>
+  </div>
+
+</div>

@@ -1,0 +1,87 @@
+<div class="overshadow" (click)="closeEdit()">
+
+</div>
+
+<div class="edit-area">
+
+
+  <div class="close-btn" (click)="closeEdit()"><i class="fas fa-times"></i></div>
+
+  <div class="scroll-inside">
+
+    <div class="container-fluid">
+
+      <div class="row">
+        <div class="col-md-12">
+
+          <form [formGroup]="slideForm" (submit)="saveData()">
+
+            <div class="row">
+              <div class="col-md-12">
+                <img [src]="apiUrl+slide.image" class="img-fluid" *ngIf="!croppedImage && slide.image">
+                <img [src]="croppedImage" class="img-fluid" *ngIf="croppedImage">
+                <div>
+                  <button type="button" class="btn btn-warning" (click)="openEdit()">
+                    <i class="fas fa-image"></i>
+                  </button>
+                  <button type="button" class="btn btn-success" (click)="backBasePhoto()">
+                    <i class="fas fa-redo"></i>
+                  </button>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-12">
+                <hr>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-6">
+                <mat-form-field class="example-full-width">
+                  <input matInput placeholder="Tytył" formControlName="title">
+                </mat-form-field>
+                <mat-form-field class="example-full-width">
+                  <input matInput placeholder="Pod tytuł" formControlName="subTitle">
+                </mat-form-field>
+                <mat-form-field class="example-full-width">
+                  <input matInput placeholder="Tekst na linku" formControlName="linkTitle">
+                </mat-form-field>
+              </div>
+              <div class="col-md-6">
+                <mat-form-field class="example-full-width">
+                  <input matInput placeholder="Link" formControlName="link">
+                </mat-form-field>
+                <mat-form-field class="w-100">
+                  <mat-label>Otwórz link</mat-label>
+                  <mat-select formControlName="target">
+                    <mat-option *ngFor="let t of targets" [value]="t.value">
+                      {{t.name}}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+                <hr>
+                <mat-slide-toggle class="example-margin" formControlName="status">
+                  Status
+                </mat-slide-toggle>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-md-12">
+                <button class="btn btn-primary btn-save btn-lg">
+                  Zapisz
+                </button>
+              </div>
+            </div>
+
+          </form>
+
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
+<ng-template #imagePopup></ng-template>

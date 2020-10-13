@@ -1,0 +1,62 @@
+extends ../layouts/layout.pug
+
+block header
+    include ../partials/banner-attachments.pug
+    include ../partials/submenu.pug
+    
+block content
+    //- .double-container.institution
+    //-     .row
+    //-         .col-left-double
+    //-             .container
+    //-                 .row
+    //-                     .col-inst
+    //-                         each inst,i in institutions
+    //-                             .row-inst
+    //-                                 .image-data
+    //-                                     if(inst.image)
+    //-                                         .swp-gallery
+    //-                                             figure.swp-gal-col(itemprop='associatedMedia' itemscope='' itemtype='http://schema.org/ImageObject')
+    //-                                                 a.thumbnail(href=inst.image.image itemprop='contentUrl' data-size=inst.image.sizeString)
+    //-                                                     span.thumb-image
+    //-                                                         img.img-fluid.image-thumb(src=inst.image.image)
+    //-                                                 figcaption(itemprop='caption description') #{inst.name}
+    //-                                 .info-data
+    //-                                     h2.inst-name #{inst.name}
+    //-                                     .description #{inst.description}
+
+    //-         .col-right-double
+    //-             .right-content-db
+    //-                 include ../partials/partners.pug
+
+    .container-one.recommendations
+        .row
+            .col-left-double
+                .col-rec
+                    each inst,i in recomendations
+                        .row-rec
+                            .image-data
+                                if(inst.image)
+                                    .swp-gallery
+                                        figure.swp-gal-col(itemprop='associatedMedia' itemscope='' itemtype='http://schema.org/ImageObject')
+                                            a.thumbnail(href=inst.image.image itemprop='contentUrl' data-size=inst.image.sizeString)
+                                                span.thumb-image
+                                                    img.img-fluid.image-thumb(src=inst.image.image)
+                                            figcaption(itemprop='caption description') #{inst.name}
+                            .info-data
+                                if(inst.name || inst.file)
+                                    .title-data
+                                        if(inst.name)
+                                            h2.rec-name #{inst.name}
+                                        if(inst.file)
+                                            .pdf-rec
+                                                a(href=inst.file)
+                                                    i.far.fa-file-pdf
+                                if(inst.description)
+                                    .description #{inst.description}
+
+    include ../partials/partners-horizontal.pug
+
+block footer
+    include ../partials/contact-section.pug
+    include ../partials/pswp.pug

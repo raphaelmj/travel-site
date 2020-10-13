@@ -1,0 +1,22 @@
+<div class="row-map-event legend">
+  <div class="col col-legend">
+    <app-legend-select [types]="types" (emitSelect)="selectType($event)" [attractions]="attractions">
+    </app-legend-select>
+  </div>
+</div>
+<div class="row-map-event">
+  <div class="col col-legend">
+    <agm-map [latitude]="lat" [longitude]="lng" [zoom]="zoom" (zoomChange)="changeZoom($event)">
+      <template *ngFor="let m of markersFullList;let i = index">
+        <agm-marker [latitude]="m.data.lat" [longitude]="m.data.lng" [iconUrl]="apiUrl+m.icon"
+          (markerClick)="showMarkerCloud(m,i)">
+          <agm-info-window [disableAutoPan]="true">
+            <h3 [ngStyle]="{'text-transform': 'uppercase'}" class="place-name">{{m.data.name}}</h3>
+            liczba wycieczek:&nbsp;<span class="count-number"></span>
+            <div class="link-search"></div>
+          </agm-info-window>
+        </agm-marker>
+      </template>
+    </agm-map>
+  </div>
+</div>

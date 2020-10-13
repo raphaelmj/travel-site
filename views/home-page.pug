@@ -1,0 +1,39 @@
+extends layouts/layout.pug
+
+block header
+    include ./partials/front-rotor.pug
+    include ./partials/submenu.pug
+
+    //- include ./partials/search-intro.pug
+    //- include ./partials/promo-home.pug
+    //- include ./partials/home-article.pug
+    //- include ./partials/home-boxes.pug 
+    //- .double-container
+    //-     .row
+    //-         .col-left-double
+    //-             include ./partials/promo-home.pug
+    //-             include ./partials/home-article.pug
+    //-             include ./partials/home-boxes.pug 
+                
+    //-         .col-right-double
+    //-             .right-content-db
+    //-                 include ./partials/partners.pug
+    //- include ./partials/partners-horizontal.pug
+    .trio-container.home-page
+        .row
+            .col-left
+                .row-inside
+                    .col-left-in
+                        include ./partials/home-newses.pug
+                    .col-right-in
+                        include ./partials/promo-home-col.pug
+                        include ./partials/home-boxes-col.pug 
+            .col-right
+                include ./partials/partners-more-v.pug
+
+    include ./partials/map-section.pug
+block content
+    
+block footer
+    include ./partials/contact-section.pug
+    include ./partials/footer.pug

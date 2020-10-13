@@ -1,0 +1,7 @@
+<label [ngClass]="{'error-select': errorBool}" (click)="selectCheckbox()" (tap)="selectCheckbox()">
+  <span class="check-icon">
+    <i class="far fa-check-square" *ngIf="selectBool"></i>
+    <i class="far fa-square" *ngIf="!selectBool"></i>
+  </span>
+  <span [innerHtml]="labelText"></span>
+</label>

@@ -1,0 +1,44 @@
+<div class="row">
+  <div class="col-md-12">
+    <button type="button" class="btn btn-primary btn-lg" (click)="openEventAdd()">
+      <i class="fas fa-plus"></i> Dodaj wydarzenie
+    </button>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-12">
+    <hr>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-12">
+    <app-list-filters [qP]="queryParams" (changeFilter)="changeValuesFilters($event)"></app-list-filters>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-12">
+    <hr>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-12">
+    <app-pagination [pages]="pages" [current]="queryParams.page" (emitChange)="changePage($event)"></app-pagination>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-12">
+    Wyników: {{total}}
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-12">
+    <hr>
+    <app-event-row *ngFor="let event of events" [event]="event" (editEvent)="editEventOpen($event)"></app-event-row>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-12">
+    <app-pagination [pages]="pages" [current]="queryParams.page" (emitChange)="changePage($event)"></app-pagination>
+  </div>
+</div>
+<ng-template #editTemp></ng-template>

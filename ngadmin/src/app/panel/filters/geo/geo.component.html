@@ -1,0 +1,16 @@
+<div class="update-loading" *ngIf="isLoading">
+  <mat-progress-spinner class="example-margin" [color]="'primary'" [mode]="'indeterminate'" [value]="50">
+  </mat-progress-spinner>
+</div>
+<div class="row">
+  <div class="col-md-12">
+    <div class="add-filter-title-cnt">
+      <h4 class="geo-title"><i class="fas fa-map"></i> Regiony</h4>
+      <button type="button" class="btn btn-primary" (click)="addRegionOpen()">
+        <i class="fas fa-plus"></i>
+      </button>
+    </div>
+    <app-region-row *ngFor="let r of regions; let i=index" [region]="r"></app-region-row>
+  </div>
+</div>
+<ng-template #editAdd></ng-template>

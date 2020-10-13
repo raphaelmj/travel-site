@@ -1,0 +1,67 @@
+.overshadow{
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.9);
+    z-index: 10;
+}
+
+.edit-area{
+    position: fixed;
+    left: 5vw;
+    top:5vh;
+    width: 90vw;
+    height: 90vh;
+    background: #FFF;
+    z-index: 11;
+    padding: 10vh 10vw 10vh 10vw;
+    .scroll-inside{
+        width: 70vw;
+        height: 70vh;
+        overflow-y: scroll;
+    }
+
+    button.select-type{
+        width: 50%;
+        padding-top: 20px;
+        padding-bottom: 20px;
+        margin-bottom: 10px;
+        display: inline-block;
+        i{
+            font-size: 2rem;
+        }
+    }
+
+    .close-btn{
+        position: absolute;
+        right: 0;
+        top:-1vh;
+        background: #FFF;
+        border-radius: 90px;
+        width: 50px;
+        height: 50px;
+        text-align: center;
+        box-shadow: 0 0 10px #000;
+        cursor: pointer;
+        font-size: 2rem;
+        z-index: 12;
+    }
+
+}
+
+.example-full-width{
+    width: 100%;
+}
+.more-height{
+    height: 50px;
+}
+
+a.pin-link{
+    font-size: 1.2rem;
+    display: table;
+    height: 25px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}

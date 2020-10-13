@@ -1,0 +1,7 @@
+<form>
+  <select #selectElemt (change)="setElementSelect(selectElemt.value)">
+    <option *ngFor="let el of selectCollection" [value]="el.value" [selected]="el.value==currentSelect.value">
+      {{el.name}}
+    </option>
+  </select>
+</form>

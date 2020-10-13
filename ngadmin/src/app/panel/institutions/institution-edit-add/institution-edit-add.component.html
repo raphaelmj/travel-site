@@ -1,0 +1,79 @@
+<div class="overshadow" (click)="closeEdit()">
+
+</div>
+
+<div class="edit-area">
+
+
+  <div class="close-btn" (click)="closeEdit()"><i class="fas fa-times"></i></div>
+
+  <div class="scroll-inside">
+
+    <div class="container-fluid">
+
+      <div class="row">
+        <div class="col-md-12">
+
+          <form [formGroup]="instForm" (submit)="saveData()">
+
+            <div class="row">
+              <div class="col-md-4">
+                <img [src]="apiUrl+inst.logo" class="img-fluid" *ngIf="!croppedImage && inst.logo">
+                <img [src]="croppedImage" class="img-fluid" *ngIf="croppedImage">
+                <div>
+                  <button type="button" class="btn btn-warning" (click)="openEdit()">
+                    <i class="fas fa-image"></i>
+                  </button>
+                  <button type="button" class="btn btn-success" (click)="backBasePhoto()">
+                    <i class="fas fa-redo"></i>
+                  </button>
+                </div>
+              </div>
+              <div class="col-md-8">
+                <mat-form-field class="example-full-width">
+                  <input matInput placeholder="Nazwa" formControlName="name">
+                </mat-form-field>
+                <mat-form-field class="example-full-width">
+                  <input matInput placeholder="Wycieczka do" formControlName="tourTarget">
+                </mat-form-field>
+                <mat-slide-toggle class="example-margin" formControlName="status">
+                  Status
+                </mat-slide-toggle>
+              </div>
+            </div>
+
+
+            <div class="row">
+              <div class="col-md-12">
+                <hr>
+              </div>
+            </div>
+
+
+            <div class="row">
+              <div class="col-md-12">
+                <ckeditor formControlName="description" [config]="ckEditorConfig"></ckeditor>
+              </div>
+            </div>
+
+
+
+            <div class="row">
+              <div class="col-md-12">
+                <button class="btn btn-primary btn-save btn-lg">
+                  Zapisz
+                </button>
+              </div>
+            </div>
+
+          </form>
+
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
+<ng-template #imagePopup></ng-template>

@@ -1,0 +1,173 @@
+<div class="overshadow" (click)="closeEdit()">
+
+</div>
+
+<div class="edit-area">
+
+
+  <div class="close-btn" (click)="closeEdit()"><i class="fas fa-times"></i></div>
+
+  <div class="scroll-inside">
+
+    <div class="container-fluid">
+
+      <div class="row">
+        <div class="col-md-12">
+
+          <form [formGroup]="formEdit" (submit)="saveData()">
+
+            <div class="container-fluid">
+
+              <div class="row">
+                <div class="col-md-6">
+                  <h4>Nazwa firmy</h4>
+                  <mat-form-field class="w-100">
+                    <input matInput placeholder="Nazwa firmy" formControlName="firmName">
+                  </mat-form-field>
+                </div>
+                <div class="col-md-6">
+                  <h4>Adres</h4>
+                  <ckeditor formControlName="address" [config]="ckEditorConfig"></ckeditor>
+                </div>
+
+              </div>
+              <div class="row">
+                <div class="col-md-12">
+                  <hr>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-6">
+                  <h4>Email</h4>
+                  <mat-form-field class="w-100">
+                    <input matInput placeholder="email" formControlName="email">
+                  </mat-form-field>
+                </div>
+                <div class="col-md-6">
+                  <h4>Pierwsza grupa telefonów</h4>
+                  <button type="button" class="btn btn-success" (click)="addFirstPhone()">
+                    <i class="fas fa-plus"></i>
+                  </button>
+                  <hr>
+                  <div formGroupName="firstPhones">
+                    <div class="row" *ngFor="let item of formEdit.get('firstPhones')['controls'];let i=index">
+                      <div class="col-md-10">
+                        <mat-form-field class="w-100">
+                          <input matInput placeholder="telefon" [formControlName]="i">
+                        </mat-form-field>
+                      </div>
+                      <div class="col-md-2">
+                        <button type="button" class="btn btn-danger" (click)="removeFirstPhone(i)">
+                          <i class="fas fa-minus"></i>
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+
+              <div class="row">
+                <div class="col-md-12">
+                  <hr>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-md-4">
+                  <h4>Druga grupa telefonów</h4>
+                  <button type="button" class="btn btn-success" (click)="addSecondPhone()">
+                    <i class="fas fa-plus"></i>
+                  </button>
+                  <hr>
+                  <div formGroupName="secondPhones">
+                    <div class="row" *ngFor="let item of formEdit.get('secondPhones')['controls'];let i=index">
+                      <div class="col-md-10">
+                        <mat-form-field class="w-100">
+                          <input matInput placeholder="telefon" [formControlName]="i">
+                        </mat-form-field>
+                      </div>
+                      <div class="col-md-2">
+                        <button type="button" class="btn btn-danger" (click)="removeSecondPhone(i)">
+                          <i class="fas fa-minus"></i>
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-8">
+                  <h4>Banki</h4>
+                  <button type="button" class="btn btn-success" (click)="addBankGroup()">
+                    <i class="fas fa-plus"></i> dodaj bank
+                  </button>
+                  <hr>
+                  <div formGroupName="banks">
+                    <div class="row" *ngFor="let item of formEdit.get('banks')['controls'];let i=index">
+                      <div class="col-md-10">
+
+                        <div [formGroupName]="i">
+                          <div class="row">
+                            <div class="col-md-6">
+                              <mat-form-field class="w-100">
+                                <input matInput placeholder="Nazwa banku" formControlName="name">
+                              </mat-form-field>
+                            </div>
+                            <div class="col-md-6">
+                              <button type="button" class="btn btn-success" (click)="addAccount(i)">
+                                <i class="fas fa-plus"></i>
+                              </button>
+                              <hr>
+                              <div formArrayName="accounts"
+                                *ngFor="let item2 of formEdit.get('banks')['controls'][i].get('accounts').controls;let j=index">
+                                <div class="row">
+                                  <div class="col-md-10">
+                                    <mat-form-field class="w-100">
+                                      <textarea matInput placeholder="Numer konta" [formControlName]="j"></textarea>
+                                    </mat-form-field>
+                                  </div>
+                                  <div class="col-md-2">
+                                    <button type="button" class="btn btn-danger" (click)="removeBankAccount(i,j)">
+                                      <i class="fas fa-minus"></i>
+                                    </button>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+
+                      </div>
+
+                      <div class="col-md-2">
+                        <button type="button" class="btn btn-danger" (click)="removeBank(i)">
+                          <i class="fas fa-minus"></i>
+                        </button>
+                      </div>
+
+                    </div>
+
+                  </div>
+                </div>
+
+              </div>
+
+
+              <div class="row">
+                <div class="col-md-12">
+                  <hr>
+                </div>
+              </div>
+
+              <button class="btn btn-success btn-lg btn-save">Zapisz</button>
+            </div>
+          </form>
+
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
+<ng-template #imagePopup></ng-template>

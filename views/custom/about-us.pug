@@ -1,0 +1,30 @@
+extends ../layouts/layout.pug
+
+block header
+    include ../partials/banner-custom.pug
+    include ../partials/submenu.pug
+    
+block content
+    .double-container.form-view
+        .row
+            .col-left-double
+                .container
+                    .row
+                        .col-desc
+                            if(link.content)
+                                | !{link.content}
+                        .cert
+                            div(class="swp-gallery" itemscope itemtype="http://schema.org/ImageGallery")
+                                figure(class="swp-gal-col" itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject")
+                                    a(href=widgets.cert.data.image.image itemprop="contentUrl" data-size=widgets.cert.data.image.sizeString class="thumbnail")
+                                        span.thumb-image
+                                            img(src=widgets.cert.data.image.image itemprop="thumbnail" class="img-fluid" alt="")        
+
+            .col-right-double
+                .right-content-db
+                    include ../partials/partners.pug
+    
+
+block footer
+    include ../partials/contact-section.pug
+    include ../partials/pswp.pug

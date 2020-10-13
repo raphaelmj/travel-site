@@ -1,0 +1,11 @@
+.row-col.yellow
+    .head-col
+        h2 Oferta
+    .content-col.bxs
+        each bx in boxes
+            .col-box
+                h2.title-bx(style="color:#"+bx.color) #{bx.title}
+                .image-bx-el
+                    img(src=bx.image class="img-fluid" style="box-shadow:20px 64px 0 #"+bx.color)
+                .more-btn
+                    a(href=bx.selfLink target=bx.target) więcej

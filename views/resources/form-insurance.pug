@@ -1,0 +1,30 @@
+extends ../layouts/layout.pug
+
+block header
+    include ../partials/banner-insurnace.pug
+    include ../partials/submenu.pug
+    
+block content
+    -var regDesc = widgets.insurnace.data.regDesc.replace(/(\r\n|\n|\r)/gm, ""); 
+    script.
+        var formType = 'insurance'
+        var regDesc = "!{regDesc}"
+    .double-container.form-view
+        .row
+            .col-left-double
+                .container
+                    .row
+                        .col-desc
+                            | !{widgets.insurnace.data.topDesc}
+                        .col-form
+                            app-root
+
+            .col-right-double
+                .right-content-db
+                    include ../partials/partners.pug
+
+block footer
+    include ../partials/contact-section.pug
+    include ../partials/pswp.pug
+    include ../partials/ngwform-scripts.pug
+

@@ -1,0 +1,8 @@
+if !isCookie
+    .cookie-beam#cookie-beam(ng-controller="CookieController")
+        .col-icon
+            i(class="fas fa-cookie-bite")
+        .col.col-info !{widgets.cookie.data.content}
+        .col.col-bt
+            button(type="button" ng-click="hideCookieCloud()") ok
+            a(href="/polityka-prywatnosci") Polityka Prywatności  

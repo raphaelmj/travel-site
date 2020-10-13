@@ -1,0 +1,23 @@
+<div class="image">
+  <img [src]="apiUrl+reco.image?.image" class="img-fluid">
+</div>
+<div class="title">
+  <h3>
+    {{reco.name}}
+  </h3>
+</div>
+<div class="btns">
+  <button type="button" class="btn btn-warning" (click)="openEdit()">
+    <i class="fas fa-edit"></i>
+  </button>
+  <button type="button" class="btn btn-danger" (click)="deletePromo()">
+    <i class="fas fa-minus"></i>
+  </button>
+
+  <button type="button" class="btn btn-success" *ngIf="reco.status" (click)="changeStatus(false)">
+    <i class="fas fa-check"></i>
+  </button>
+  <button type="button" class="btn btn-danger" *ngIf="!reco.status" (click)="changeStatus(true)">
+    <i class="fas fa-ban"></i>
+  </button>
+</div>

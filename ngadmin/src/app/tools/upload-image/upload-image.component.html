@@ -1,0 +1,38 @@
+<div class="edit-cloud">
+  <div class="inside-cloud">
+    <div class="row-cloud">
+      <div class="col">
+        <h2>Zmień obrazek</h2>
+        <input type="file" (change)="fileChangeEvent($event)" />
+      </div>
+      <div class="col-left">
+        <img [src]="croppedImage" class="img-fluid" />
+      </div>
+      <div class="col-right">
+
+        <image-cropper [imageChangedEvent]="imageChangedEvent" [maintainAspectRatio]="maintainAspectRatio"
+          [resizeToWidth]="resizeToWidth" [aspectRatio]="wProp / hProp" format="jpeg"
+          (imageCroppedBase64)="imageCropped($event)" (imageLoaded)="imageLoaded()"
+          (loadImageFailed)="loadImageFailed()"></image-cropper>
+
+      </div>
+    </div>
+    <div class="row-cloud">
+      <div class="col-left">
+        <button type="button" class="btn btn-danger d-block" (click)="hideNotSave()">
+          Anuluj
+        </button>
+      </div>
+      <div class="col-right">
+        <button type="button" class="btn btn-success d-block" (click)="saveChanges()">
+          Zmień
+        </button>
+      </div>
+    </div>
+    <div class="row-cloud">
+      <hr>
+    </div>
+  </div>
+</div>
+
+<div class="overload-bg" (click)="hideNotSave()"></div>

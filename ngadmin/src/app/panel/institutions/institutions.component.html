@@ -1,0 +1,20 @@
+<div class="row">
+  <div class="col-md-12">
+    <button type="button" class="btn btn-primary btn-lg" (click)="addInst()">
+      Dodaj <i class="fas fa-plus"></i>
+    </button>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-12">
+    <hr>
+  </div>
+</div>
+<div class="row" id="sortInsts">
+  <div class="col-md-4" *ngFor="let inst of insts">
+    <app-institution-row [inst]="inst" (editStart)="openEdit($event)" (deleteStart)="startDelete($event)">
+    </app-institution-row>
+  </div>
+</div>
+<ng-template #editTemp></ng-template>
+<ng-template #remove></ng-template>

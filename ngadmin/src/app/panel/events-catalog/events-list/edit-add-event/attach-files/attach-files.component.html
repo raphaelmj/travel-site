@@ -1,0 +1,5 @@
+<label for="filePdf">
+  Wybierz pdf
+  <input type="file" id="filePdf" #filePdf (change)="handleFileInput($event.target.files,'pdf')"
+    accept="application/pdf">
+</label>

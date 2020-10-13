@@ -1,0 +1,27 @@
+extends ../layouts/layout.pug
+
+block header
+    include ../partials/banner-article.pug
+    include ../partials/submenu.pug
+    
+block content
+    section.article-one-cnt
+        .container-one
+            .row
+                .col-article
+                    .row-article
+                        .col-image
+                            img(src=article.image, alt="" class="img-fluid")
+                        .col-text
+                            h2.title #{article.title}
+                            | !{article.longDesc}
+                if(microGallery)
+                    if(microGallery.length)
+                        .col-gallery            
+                            include ../partials/gallery.pug
+                            
+    
+
+block footer
+    include ../partials/contact-section.pug
+    include ../partials/pswp.pug

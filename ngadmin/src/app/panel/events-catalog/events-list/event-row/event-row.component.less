@@ -1,0 +1,82 @@
+.row-grid {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  grid-gap: 16px;
+
+  // @media (max-width:1399.98px) {
+  //   grid-template-columns: repeat(5, 1fr);
+  // }
+
+  // @media (max-width:1199.98px) {
+  //   grid-template-columns: repeat(4, 1fr);
+  // }
+
+  // @media (max-width:991.98px) {
+  //   grid-template-columns: repeat(2, 1fr);
+  // }
+
+  // @media (max-width:767.98px) {
+  //   grid-template-columns: repeat(2, 1fr);
+  // }
+
+  // @media (max-width:540px) {
+  //   grid-template-columns: repeat(1, 1fr);
+  // }
+
+  .col-g {
+    position: relative;
+  }
+
+  .col-g.col-image {
+    span.nr {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 100%;
+      height: 20%;
+      background-color: rgba(0, 0, 0, 0.7);
+      color: #FFF;
+      font-size: 1.4rem;
+    }
+
+    span.b-id {
+      position: absolute;
+      left: 2px;
+      top: 2px;
+      z-index: 2;
+      font-size: 0.9rem;
+    }
+  }
+
+  .col-g {
+    h2.ev-name {
+      font-size: 1.6rem;
+    }
+  }
+
+}
+
+ul.days {
+  display: flex;
+
+  li {
+    list-style: none;
+    display: block;
+    padding: 5px;
+    width: 35px;
+    height: 35px;
+    font-size: 1.4rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 5px;
+  }
+
+  li.day {
+    background-color: #C82333;
+    color: #FFF;
+  }
+}

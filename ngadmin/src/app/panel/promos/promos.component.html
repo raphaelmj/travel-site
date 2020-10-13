@@ -1,0 +1,19 @@
+<div class="row">
+  <div class="col-md-12">
+    <button type="button" class="btn btn-primary btn-lg" (click)="addPromo()">
+      Dodaj <i class="fas fa-plus"></i>
+    </button>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-12">
+    <hr>
+  </div>
+</div>
+<div class="row" id="sortPromos">
+  <div class="col-md-3" *ngFor="let p of promos">
+    <app-promo-row [promo]="p" (editStart)="openEdit($event)" (deleteStart)="startDelete($event)"></app-promo-row>
+  </div>
+</div>
+<ng-template #editTemp></ng-template>
+<ng-template #remove></ng-template>

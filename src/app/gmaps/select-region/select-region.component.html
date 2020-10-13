@@ -1,0 +1,18 @@
+<div class="select-custom">
+  <div class="form-row">
+    <div class="select-open" (click)="openCloseSelect()"
+      [ngClass]="{'open-view': isSelectOpen, 'close-view':!isSelectOpen}">
+    </div>
+    <input type="text" readonly placeholder="Wybierz region" [ngClass]="{'hidden-select': !isSelectOpen}"
+      [(ngModel)]="regionName">
+  </div>
+  <div class="scroll-select-elements" [ngClass]="{'hidden-select': !isSelectOpen}">
+    <div [perfectScrollbar]="{}" class="scroll-area">
+      <div class="inside-select">
+        <div class="element-add" *ngFor="let r of regions" (click)="selectRegion(r)">
+          {{r.name}}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

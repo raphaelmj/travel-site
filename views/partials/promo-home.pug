@@ -1,0 +1,15 @@
+if(promos)    
+    section.home-promo.line-sec.orange
+        .container-one
+            .row
+                .title-promos
+                    h2 Szczególnie polecane
+                .col-promos
+                    .row-p
+                        each p in promos
+                            .col-p
+                                h3 #{p.title}
+                                a(href=p.attachFile target="_blank")
+                                    img(src=p.image.image, alt="" class="img-fluid")
+                        
+                    

@@ -1,0 +1,66 @@
+<div class="overshadow" (click)="closeEdit()">
+
+</div>
+
+<div class="edit-area">
+
+  <div class="close-btn" (click)="closeEdit()"><i class="fas fa-times"></i></div>
+
+  <div class="scroll-inside">
+
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-3">
+
+
+          <button mat-raised-button class="select-type" [color]="selectedType=='content'?'primary':''"
+            (click)="showEditTypeData('content')">
+            <i class="fas fa-newspaper"></i>
+            <h3>{{linkTypes.get('article')}}</h3>
+          </button>
+
+          <button mat-raised-button class="select-type" [color]="selectedType=='category'?'primary':''"
+            (click)="showEditTypeData('category')">
+            <i class="fas fa-box-open"></i>
+            <h3>{{linkTypes.get('category')}}</h3>
+          </button>
+
+          <button mat-raised-button class="select-type" [color]="selectedType=='external-link'?'primary':''"
+            (click)="showEditTypeData('external-link')">
+            <i class="fas fa-link"></i>
+            <h3>{{linkTypes.get('external-link')}}</h3>
+          </button>
+
+          <button mat-raised-button class="select-type" [color]="selectedType=='categories'?'primary':''"
+            (click)="showEditTypeData('categories')">
+            <i class="fas fa-link"></i>
+            <h3>{{linkTypes.get('categories')}}</h3>
+          </button>
+
+          <button mat-raised-button class="select-type" [color]="selectedType=='contact'?'primary':''"
+            (click)="showEditTypeData('contact')">
+            <i class="fas fa-link"></i>
+            <h3>{{linkTypes.get('contact')}}</h3>
+          </button>
+
+        </div>
+        <div class="col-md-9">
+
+          <div class="view-info current-view-info">
+            <app-current-type [linkData]="linkData"></app-current-type>
+          </div>
+
+          <div class="resources-form">
+            <button mat-raised-button color="primary" (click)="saveType()" *ngIf="customType=='contact'">Zapisz
+              zmiany</button>
+            <ng-template #dataChangeFind></ng-template>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+
+  </div>
+
+</div>

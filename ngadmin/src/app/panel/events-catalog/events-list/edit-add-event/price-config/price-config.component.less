@@ -1,0 +1,92 @@
+.overshadow {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.9);
+  z-index: 22;
+}
+
+.edit-area {
+  position: fixed;
+  left: 10vw;
+  top: 10vh;
+  width: 80vw;
+  height: 80vh;
+  background: #FFF;
+  z-index: 23;
+  padding: 2vh 2vw 2vh 2vw;
+
+  .scroll-inside {
+    width: 78vw;
+    height: 78vh;
+    overflow-y: scroll;
+  }
+
+  button.select-type {
+    width: 100%;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    margin-bottom: 10px;
+
+    i {
+      font-size: 2rem;
+    }
+  }
+
+  .close-btn {
+    position: absolute;
+    right: 0;
+    top: -1vh;
+    background: #FFF;
+    border-radius: 90px;
+    width: 50px;
+    height: 50px;
+    text-align: center;
+    box-shadow: 0 0 10px #000;
+    cursor: pointer;
+    font-size: 2rem;
+    z-index: 12;
+  }
+
+}
+
+.price-config-cnt {
+  padding: 10px;
+
+  .row-group {
+    display: flex;
+
+    .col-group {
+      width: calc(100% - 60px);
+    }
+
+    .col-remove {
+      margin-left: 10px;
+      width: 50px;
+    }
+  }
+
+  .row-price {
+    display: flex;
+
+    .col-inputs {
+      width: calc(100% - 60px);
+    }
+
+    .col-remove-price {
+      margin-left: 10px;
+      width: 50px;
+    }
+  }
+}
+
+.array-prices {
+  margin-top: 10px;
+  padding-left: 20px;
+}
+
+.btn-plus-price {
+  margin-left: 20px;
+}

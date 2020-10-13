@@ -1,0 +1,36 @@
+extends ../layouts/layout.pug
+
+block header
+    include ../partials/banner-attachments.pug
+    include ../partials/submenu.pug
+    
+block content
+    section.catalogs-presentation
+        .double-container
+            .row
+                .col-left-double
+                    .row-grid-catalogs
+                        each c in catalogs
+                            .catalog-el
+                                .image-data
+                                    if(c.image)
+                                        .swp-gallery
+                                            figure.swp-gal-col(itemprop='associatedMedia' itemscope='' itemtype='http://schema.org/ImageObject')
+                                                a.thumbnail(href=c.image.path itemprop='contentUrl' data-size=c.image.sizeString)
+                                                    span.thumb-image
+                                                        img.img-fluid.image-thumb(src=c.image.path)
+                                                figcaption(itemprop='caption description') #{c.name}
+                                .title-data
+                                    h2 #{c.name} 
+                                    .attach-bt
+                                        if(c.attachFile && c.attachFile!='')
+                                            a(href=c.attachFile)
+                                                i.far.fa-file-pdf                
+                    
+                .col-right-double
+                    .right-content-db
+                        include ../partials/partners.pug
+
+block footer
+    include ../partials/contact-section.pug
+    include ../partials/pswp.pug

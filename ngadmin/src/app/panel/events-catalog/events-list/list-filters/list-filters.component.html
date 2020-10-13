@@ -1,0 +1,40 @@
+<form [formGroup]="formFilters">
+  <div class="row">
+    <div class="col-md-3">
+      <mat-form-field class="w-100">
+        <input matInput placeholder="Numer katalogowy" formControlName="numberPhrase">
+      </mat-form-field>
+    </div>
+    <div class="col-md-3">
+      <mat-form-field class="w-100">
+        <mat-label>Status</mat-label>
+        <mat-select formControlName="status">
+          <mat-option *ngFor="let s of statuses" [value]="s.value">
+            {{s.name}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+    <div class="col-md-3">
+      <mat-form-field class="w-100">
+        <mat-label>Type</mat-label>
+        <mat-select formControlName="type">
+          <mat-option *ngFor="let t of types" [value]="t.value">
+            {{t.name}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+    <div class="col-md-3">
+      <mat-form-field class="w-100">
+        <mat-label>Sezon</mat-label>
+        <mat-select formControlName="sezon">
+          <mat-option *ngFor="let s of sezons" [value]="s.value">
+            {{s.name}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+  </div>
+  <!-- {{formFilters.value|json}} -->
+</form>

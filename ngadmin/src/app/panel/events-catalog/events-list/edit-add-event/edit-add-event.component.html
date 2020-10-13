@@ -1,0 +1,343 @@
+<div class="overshadow" (click)="closeEdit()">
+
+</div>
+
+<div class="update-loading" *ngIf="isLoading">
+  <mat-progress-spinner class="example-margin" [color]="'primary'" [mode]="'indeterminate'" [value]="50">
+  </mat-progress-spinner>
+</div>
+
+<div class="edit-area">
+
+  <div class="close-btn" (click)="closeEdit()"><i class="fas fa-times"></i></div>
+
+  <div class="scroll-inside">
+
+
+    <form [formGroup]="formEvent" (submit)="saveEvent()">
+
+
+      <div class="container-fluid">
+
+        <div class="row">
+          <div class="col-md-6">
+            <mat-form-field class="w-100">
+              <mat-label>Nazwa</mat-label>
+              <input matInput placeholder="Nazwa" formControlName="name">
+            </mat-form-field>
+          </div>
+          <div class="col-md-3">
+            <mat-form-field class="w-100">
+              <mat-label>Numer katalogowy</mat-label>
+              <input matInput placeholder="Numer katalogowy" formControlName="number">
+              <mat-error *ngIf="formEvent.get('number').errors?.numberTaken">
+                Numer jest już zajęty
+              </mat-error>
+            </mat-form-field>
+          </div>
+          <div class="col-md-3">
+            <mat-form-field class="w-100">
+              <mat-label>Status</mat-label>
+              <mat-select formControlName="status">
+                <mat-option *ngFor="let s of statuses" [value]="s.value">
+                  {{s.name}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-12">
+            <hr>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-6">
+            <app-main-image [image]="event.image" (emitImageChange)="changeImage($event)">
+            </app-main-image>
+          </div>
+          <div class="col-md-6">
+            <mat-form-field class="w-100">
+              <mat-label>Katalog</mat-label>
+              <mat-select formControlName="catalog">
+                <mat-option *ngFor="let c of catalogs" [value]="c.id">
+                  {{c.name}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+            <hr>
+            <mat-slide-toggle class="example-margin" [color]="'primary'" formControlName="atSezon">
+              Oferta sezonowa
+            </mat-slide-toggle>
+            <hr>
+            <h4 class="title">Wstęp</h4>
+            <ckeditor formControlName="smallDesc" [config]="ckEditorConfig"></ckeditor>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-12">
+            <hr>
+          </div>
+        </div>
+
+
+        <div class="row">
+          <div class="col-md-12">
+            <h4 class="title">Pełny opis</h4>
+            <ckeditor formControlName="longDesc" [config]="ckEditorConfig"></ckeditor>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-12">
+            <hr>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-3">
+            <mat-form-field class="w-100">
+              <mat-label>Typ</mat-label>
+              <mat-select formControlName="eventType">
+                <mat-option *ngFor="let t of types" [value]="t.value">
+                  {{t.name}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+          <div class="col-md-3">
+            <mat-form-field class="w-100">
+              <mat-label>Sezon</mat-label>
+              <mat-select formControlName="eventSezonType">
+                <mat-option *ngFor="let s of sezons" [value]="s.value">
+                  {{s.name}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+          <div class="col-md-3">
+            <mat-form-field class="w-100">
+              <mat-label>Data rozpoczęcia</mat-label>
+              <input matInput [matDatepicker]="pickerStart" formControlName="startAt">
+              <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+              <mat-datepicker #pickerStart></mat-datepicker>
+            </mat-form-field>
+          </div>
+          <div class="col-md-3">
+            <mat-form-field class="w-100">
+              <mat-label>Data zakończenia</mat-label>
+              <input matInput [matDatepicker]="pickerEnd" formControlName="endAt">
+              <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+              <mat-datepicker #pickerEnd></mat-datepicker>
+            </mat-form-field>
+          </div>
+
+        </div>
+
+        <div class="row">
+          <div class="col-md-12">
+            <hr>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-12">
+            <mat-form-field class="w-100">
+              <mat-label>Cena brutto</mat-label>
+              <input matInput placeholder="Nazwa" currencyMask formControlName="priceBrutto"
+                [options]="{ prefix: 'PLN ', thousands: '.', decimal: ',' }">
+            </mat-form-field>
+          </div>
+          <!-- <div class="col-md-4">
+            <mat-form-field class="w-100">
+              <mat-label>Cena brutto</mat-label>
+              <input matInput placeholder="Nazwa" currencyMask formControlName="priceNetto"
+                [options]="{ prefix: 'PLN ', thousands: '.', decimal: ',' }">
+            </mat-form-field>
+          </div>
+          <div class="col-md-4">
+            <mat-form-field class="w-100">
+              <mat-label>Podatek</mat-label>
+              <input matInput placeholder="Nazwa" currencyMask formControlName="tax"
+                [options]="{ prefix: 'PLN ', thousands: '.', decimal: ',' }">
+            </mat-form-field>
+          </div> -->
+        </div>
+
+        <div class="row">
+          <div class="col-md-12">
+            <hr>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-12">
+            <h4 class="title">Konfiguracja ceny</h4>
+          </div>
+          <div class="col-md-8">
+            <app-price-preview [priceConfig]="event.priceConfig"></app-price-preview>
+          </div>
+
+          <div class="col-md-4">
+            <button mat-raised-button color="primary" type="button" class="w-100" (click)="openPriceConfigEdit()">
+              Konfiguruj cenę
+            </button>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-12">
+            <hr>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-12">
+            <h4 class="title">Galeria</h4>
+          </div>
+          <div class="col-md-8">
+            <div class="row-gallery-grid">
+              <div class="col-g" *ngFor="let img of event.microGallery">
+                <img [src]="apiUrl+img.image" class="img-fluid">
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <button mat-raised-button color="primary" type="button" class="w-100"
+              (click)="openMicroGalleryConfigEdit()">
+              Edytuj / Utwórz galerię
+            </button>
+          </div>
+        </div>
+
+
+        <div class="row">
+          <div class="col-md-12">
+            <hr>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-12">
+            <h4 class="title">Załączniki</h4>
+          </div>
+          <div class="col-md-4">
+            <app-attach-files (emitAttachFile)="attachGet($event)"></app-attach-files>
+          </div>
+          <div class="col-md-8">
+            <div formArrayName="attachments" *ngFor="let item of formEvent.get('attachments').controls; let i = index;">
+              <div [formGroupName]="i" class="file-el">
+                <div class="col-data">
+                  <mat-form-field class="w-100">
+                    <mat-label>Nazwa pliku</mat-label>
+                    <input matInput placeholder="Nazwa pliku" formControlName="name">
+                  </mat-form-field>
+                  <!-- {{item.get('file').value}} -->
+                </div>
+                <div class="col-remove">
+                  <button type="button" class="btn btn-danger btn-sm" (click)="removeEventAttach(i)">
+                    <i class="fas fa-minus"></i>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-12">
+            <hr>
+          </div>
+        </div>
+
+
+        <div class="row">
+          <div class="col-md-4">
+            <h4 class="title">Regiony</h4>
+            <div [perfectScrollbar]="{}" class="scroll-area" [disabled]="false">
+              <div class="filter-element" *ngFor="let el of event.Regions;let i=index">
+                <div class="name">{{el.name}}</div>
+                <div class="remove">
+                  <button type="button" class="btn btn-danger btn-sm" (click)="removeRegion(el,i)">
+                    <i class="fas fa-minus"></i>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <h4 class="title">Miasta</h4>
+            <div [perfectScrollbar]="{}" class="scroll-area" [disabled]="false">
+              <div class="filter-element" *ngFor="let el of event.Cities;let i=index">
+                <div class="name">{{el.name}}</div>
+                <div class="remove">
+                  <button type="button" class="btn btn-danger btn-sm" (click)="removeCity(el,i)">
+                    <i class="fas fa-minus"></i>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <h4 class="title">Atrakcje</h4>
+            <div [perfectScrollbar]="{}" class="scroll-area" [disabled]="false">
+              <div class="filter-element" *ngFor="let el of event.Attractions;let i=index">
+                <div class="name">{{el.name}}</div>
+                <div class="remove">
+                  <button type="button" class="btn btn-danger btn-sm" (click)="removeAttraction(el,i)">
+                    <i class="fas fa-minus"></i>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12">
+            <hr>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12">
+            <app-filters-find-add [eventRegions]="event.Regions" [eventCities]="event.Cities"
+              [eventAttractions]="event.Attractions" (addRegionEmit)="addRegion($event)" (addCityEmit)="addCity($event)"
+              (addAttractionEmit)="addAttraction($event)">
+            </app-filters-find-add>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12">
+            <hr>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-4">
+            <h4 class="title">Tematy</h4>
+            <app-themes-select [elements]="event.Themes" [allElements]="themes" (emitData)="changeThemes($event)">
+            </app-themes-select>
+          </div>
+          <div class="col-md-4">
+            <h4 class="title">Przedziały wiekowe</h4>
+            <app-ages-select [elements]="event.Ages" [allElements]="ages" (emitData)="changeAges($event)">
+            </app-ages-select>
+          </div>
+          <div class="col-md-4">
+            <h4 class="title">Dni</h4>
+            <app-days-select [elements]="event.Days" [allElements]="days" (emitData)="changeDays($event)">
+            </app-days-select>
+          </div>
+        </div>
+      </div>
+
+      <button class="btn btn-success btn-lg btn-save">Zapisz</button>
+
+    </form>
+
+  </div>
+
+</div>
+<ng-template #editTemp></ng-template>

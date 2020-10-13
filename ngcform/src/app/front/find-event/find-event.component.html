@@ -1,0 +1,14 @@
+<div class="input-cnt" *ngIf="isCloudShow && !isSetOn">
+	<div class="criteria-sug-list">
+		<div class="scroll-area-cnt">
+			<div [perfectScrollbar]="{}" class="scroll-area">
+				<div class="sug-row" *ngFor="let ev of events">
+					<div class="event-number">
+						{{ev._source.number}}
+					</div>
+					<div class="over-click" (click)="setEventNumber(ev)"></div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

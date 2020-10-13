@@ -1,0 +1,104 @@
+<div class="data-cnt" [ngSwitch]="type">
+  <div *ngSwitchCase="'invoice'">
+    <div class="row-grid-temp">
+      <div class="label text-muted">
+        Imię i nazwisko
+      </div>
+      <div class="value">
+        {{data.name}}
+      </div>
+      <div class="label text-muted">
+        email
+      </div>
+      <div class="value">
+        {{data.email}}
+      </div>
+      <div class="label text-muted">
+        phone
+      </div>
+      <div class="value">
+        {{data.phone}}
+      </div>
+      <div class="label text-muted">
+        numer katalogowy
+      </div>
+      <div class="value">
+        {{data.number}}
+      </div>
+      <div class="label text-muted">
+        opis
+      </div>
+      <div class="value">
+        {{data.description}}
+      </div>
+    </div>
+  </div>
+  <div *ngSwitchCase="'insurance'">
+    <div class="row-grid-temp">
+      <div class="label text-muted">
+        Imię i nazwisko
+      </div>
+      <div class="value">
+        {{data.name}}
+      </div>
+      <div class="label text-muted">
+        email
+      </div>
+      <div class="value">
+        {{data.email}}
+      </div>
+      <div class="label text-muted">
+        phone
+      </div>
+      <div class="value">
+        {{data.phone}}
+      </div>
+      <div class="label text-muted">
+        numer katalogowy
+      </div>
+      <div class="value">
+        {{data.number}}
+      </div>
+      <div class="label text-muted">
+        opis
+      </div>
+      <div class="value">
+        {{data.description}}
+      </div>
+    </div>
+  </div>
+  <div *ngSwitchCase="'question'">
+    <div class="row-grid-temp">
+      <div class="label text-muted">
+        Imię i nazwisko
+      </div>
+      <div class="value">
+        {{data.name}}
+      </div>
+      <div class="label text-muted">
+        email
+      </div>
+      <div class="value">
+        {{data.email}}
+      </div>
+      <div class="label text-muted">
+        phone
+      </div>
+      <div class="value">
+        {{data.phone}}
+      </div>
+      <div class="label text-muted">
+        numer katalogowy
+      </div>
+      <div class="value">
+        {{data.number}}
+      </div>
+      <div class="label text-muted">
+        wiadomość
+      </div>
+      <div class="value">
+        {{data.description}}
+      </div>
+    </div>
+  </div>
+</div>

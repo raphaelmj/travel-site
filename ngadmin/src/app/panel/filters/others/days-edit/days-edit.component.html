@@ -1,0 +1,22 @@
+<div class="row">
+  <div class="col-md-11">
+    <div class="tag-view-cnt">
+      <div class="tag-view" *ngFor="let d of days">
+        {{d.daysNumber}}
+        <button type="button" class="btn" (click)="updateData(d)">
+          <i class="fas fa-edit"></i>
+        </button>
+        <button type="button" class="btn" (click)="beforeDelete(d)">
+          <i class="far fa-trash-alt"></i>
+        </button>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-1">
+    <button type="button" class="btn btn-success btn-lg" (click)="addDay()">
+      <i class="fas fa-plus"></i>
+    </button>
+  </div>
+</div>
+<ng-template #editTemp></ng-template>
+<ng-template #confirm></ng-template>

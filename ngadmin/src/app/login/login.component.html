@@ -1,0 +1,38 @@
+<div class="login-container">
+  <div class="login-cell">
+
+    <div class="row">
+      <div class="col-md-4 offset-md-4 login-col">
+        <div class="over-loading" *ngIf="spinnerShow">
+          <mat-spinner></mat-spinner>
+        </div>
+        <div class="alert alert-danger" role="alert" *ngIf="isAuthAlert">
+          Błąd logowania
+        </div>
+        <h2>Logowanie</h2>
+        <form class="example-form" (ngSubmit)="sumbmitLogin()">
+          <mat-form-field class="example-full-width">
+            <!-- <input
+                                [(ngModel)]="email"
+                                name="email"
+                                matInput placeholder="Email"
+                                type="text"
+                                [pattern]="userEmailPattern"
+                                #userEmail="ngModel"
+                        > -->
+            <input [(ngModel)]="email" name="email" matInput placeholder="Login" type="text" #userEmail="ngModel">
+            <mat-error *ngIf="userEmail.errors?.pattern">
+              Podaj email w poprawnym formacie
+            </mat-error>
+          </mat-form-field>
+
+          <mat-form-field class="example-full-width">
+            <input [(ngModel)]="password" name="password" matInput placeholder="Hasło" type="password">
+          </mat-form-field>
+          <button type="submit" class="btn btn-primary btn-block">Loguj</button>
+        </form>
+      </div>
+    </div>
+
+  </div>
+</div>

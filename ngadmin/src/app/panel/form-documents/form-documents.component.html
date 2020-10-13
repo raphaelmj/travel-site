@@ -1,0 +1,30 @@
+<div class="row">
+  <div class="col-md-12">
+    <app-docs-filters [dQP]="docQueryParams" (emitChange)="changeFilter($event)"></app-docs-filters>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-12">
+    <hr>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-12">
+    <app-pagination [pages]="pages" [current]="docQueryParams.page" (emitChange)="changePage($event)"></app-pagination>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-12">
+    <hr>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-12">
+    <app-doc-row *ngFor="let d of docs" [doc]="d"></app-doc-row>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-12">
+    <app-pagination [pages]="pages" [current]="docQueryParams.page" (emitChange)="changePage($event)"></app-pagination>
+  </div>
+</div>

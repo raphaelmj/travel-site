@@ -1,0 +1,116 @@
+<app-header [catalog]="viewCatalog" [menu]="menu"></app-header>
+
+<section class="map">
+  <div class="container-one">
+    <div class="row search-p">
+      <div class="col-search-point">
+        <app-search-point (emitCriteria)="setPoint($event)"></app-search-point>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-legend">
+        <app-legend-select [mapQueryParams]="mapQueryParams" [types]="types" (emitSelect)="selectType($event)">
+        </app-legend-select>
+      </div>
+    </div>
+    <div class="row">
+      <h2 class="map-header">Mapa miast i atrakcji regionu</h2>
+    </div>
+    <div class="row map-and-filters">
+      <div class="col-left-map">
+        <form [formGroup]="filterForm">
+          <div class="row-select-region">
+            <div class="col-select-frm">
+              <app-select-region [regions]="criteria.regions" [selectedRegion]="selectedRegion"
+                (emitRegionChange)="changeRegion($event)"></app-select-region>
+            </div>
+            <!-- <div class="col-button-show-all">
+            <button type="button" class="btn-show-all" (click)="showAll()">Pokaż wszystko</button>
+          </div> -->
+          </div>
+
+
+          <div class="elements-cnt attractions-els">
+            <h3 class="filter-t" *ngIf="markersFullList.length>0">
+              Atrakcje
+            </h3>
+            <!-- <div class="input-filter-cnt">
+              <input type="text" formControlName="cityPhrase" placeholder="filtruj atrakacje">
+            </div> -->
+            <div [perfectScrollbar]="{}" class="scroll-area-attr">
+              <div *ngFor="let element of markersFullList;let i = index" class="row row-list-el">
+                <div class="region-element" *ngIf="element.localType=='attraction'">
+                  <div class="type-icon">
+                    <img [src]="apiUrl+element.icon" class="img-fluid" (click)="showElement(element,i)">
+                  </div>
+                  <div class="name-of" (click)="showElement(element,i)">
+                    {{element.data.name}}
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="elements-cnt cities-els">
+            <h3 class="filter-t" *ngIf="markersFullList.length>0">
+              Miasta
+            </h3>
+            <!-- <div class="input-filter-cnt">
+
+            </div> -->
+            <div [perfectScrollbar]="{}" class="scroll-area-cities">
+              <div *ngFor="let element of markersFullList;let i = index" class="row row-list-el">
+                <div class="region-element" *ngIf="element.localType=='city'">
+                  <div class="type-icon">
+                    <img [src]="apiUrl+element.icon" class="img-fluid" (click)="showElement(element,i)">
+                  </div>
+                  <div class="name-of" (click)="showElement(element,i)">
+                    {{element.data.name}}
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </form>
+
+
+        <div class="instruct">
+          <div [innerHtml]="instruct"></div>
+        </div>
+
+
+      </div>
+      <div class=" col-right-map">
+        <agm-map [latitude]="lat" [longitude]="lng" [zoom]="zoom" (zoomChange)="changeZoom($event)">
+          <template *ngFor="let m of markersFullList;let i = index">
+            <agm-marker [latitude]="m.data.lat" [longitude]="m.data.lng" [iconUrl]="apiUrl+m.icon"
+              (markerClick)="showMarkerCloud(m,i)">
+              <agm-info-window [disableAutoPan]="true">
+                <h3 [ngStyle]="{'text-transform': 'uppercase'}" class="place-name">{{m.data.name}}</h3>
+                liczba wycieczek:&nbsp;<span class="count-number"></span>
+                <div class="link-search"></div>
+                <!-- <button (click)="openInfoCloud(m)" class="btn-cloud">dodatkowe informacje o miejscu ...</button> -->
+              </agm-info-window>
+            </agm-marker>
+          </template>
+          <agm-marker #singlePointEl [latitude]="singlePoint._source.lat" [longitude]="singlePoint._source.lng"
+            [iconUrl]="singlePoint.icon" *ngIf="singlePoint">
+            <agm-info-window [disableAutoPan]="true" #singlePointInfoWindowEl [isOpen]="true">
+              <h3 [ngStyle]="{'text-transform': 'uppercase'}" class="place-name">{{singlePoint._source.name}}</h3>
+              liczba wycieczek:&nbsp;<span class="count-number">{{singlePoint.total}}</span>
+              <div class="link-search">
+                <a [href]="singlePoint.query" target="_blank">zobacz w wynikach wyszukiwania</a>
+              </div>
+            </agm-info-window>
+          </agm-marker>
+        </agm-map>
+
+
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<app-footer></app-footer>

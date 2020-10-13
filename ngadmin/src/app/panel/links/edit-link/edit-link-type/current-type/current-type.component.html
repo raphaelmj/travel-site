@@ -1,0 +1,36 @@
+<h4>Aktulanie przypisany typ linku:</h4>
+<h2 class="current-type-head">
+    <span class="badge badge-info" *ngIf="linkData.type!='' && linkData.type!=null && linkData.type!='blank'">
+        {{linkTypes.get(linkData.type)}}
+    </span>
+    <span class="badge badge-danger" *ngIf="linkData.type=='' || linkData.type==null || linkData.type=='blank'">
+        nieokreślony typ linku
+    </span>
+</h2>
+<div *ngIf="linkData.type=='course'">
+    <div *ngIf="linkData.data==null">
+        <span class="badge badge-danger">Brak wybranego zasobu</span>
+    </div>
+    <div *ngIf="linkData.data!=null">
+        <span class="badge badge-success">zasób:</span> {{linkData.data.name}}
+    </div>
+</div>
+<div *ngIf="linkData.type=='content'">
+    <div *ngIf="linkData.data==null">
+        <span class="badge badge-danger">Brak wybranego zasobu</span>
+    </div>
+    <div *ngIf="linkData.data!=null">
+        <span class="badge badge-success">zasób:</span> {{linkData.data.title}}
+    </div>
+</div>
+
+<div *ngIf="linkData.type=='school'">
+    <div *ngIf="linkData.data==null">
+        <span class="badge badge-danger">Brak wybranego zasobu</span>
+    </div>
+    <div *ngIf="linkData.data!=null">
+        <span class="badge badge-success">zasób:</span> {{linkData.data.name}}
+    </div>
+</div>
+
+<hr>

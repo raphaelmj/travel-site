@@ -1,0 +1,26 @@
+<form [formGroup]="formC">
+  <div class="row">
+    <div class="col-md-6">
+      <mat-form-field class="w-100">
+        <mat-label>Region</mat-label>
+        <mat-select formControlName="region">
+          <mat-option *ngFor="let el of regions" [value]="el.id">
+            {{el.name}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+
+    <div class="col-md-6">
+      <mat-form-field class="w-100">
+        <mat-label>Miasto</mat-label>
+        <mat-select formControlName="city">
+          <mat-option *ngFor="let el of selectCities" [value]="el.id">
+            {{el.name}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+  </div>
+
+</form>

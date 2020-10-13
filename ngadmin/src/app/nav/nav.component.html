@@ -1,0 +1,88 @@
+<nav class="navbar navbar-expand-lg navbar-light" id="navBar" *ngIf="showNav">
+
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item">
+        <a class="nav-link" [routerLink]="['/panel']">Start</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link dropdown-toggle" href="#" id="structNav" data-toggle="dropdown" aria-haspopup="true"
+          aria-expanded="false">
+          Struktura
+        </a>
+        <div class="dropdown-menu" aria-labelledby="structNav">
+          <a class="dropdown-item" [routerLink]="['/panel/links']">Linki</a>
+          <a class="dropdown-item" [routerLink]="['/panel/links/menus']">Menu</a>
+        </div>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" [routerLink]="['/panel/events-catalog']">Katalogi</a>
+      </li>
+      <li class="nav-item  dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="filtersNav" data-toggle="dropdown" aria-haspopup="true"
+          aria-expanded="false">
+          Filtry
+        </a>
+        <div class="dropdown-menu" aria-labelledby="filtersNav">
+          <a class="dropdown-item" [routerLink]="['/panel/filters/geo']">Filtry geograficzne</a>
+          <a class="dropdown-item" [routerLink]="['/panel/filters/others']">Filtry tematyczne/wieku/dni</a>
+        </div>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" [routerLink]="['/panel/form-documents']">Dokumenty formularza</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" [routerLink]="['/panel/articles']">Artykuły</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" [routerLink]="['/panel/attachments']">Dokumenty</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" [routerLink]="['/panel/home-pages']">Boxy</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" [routerLink]="['/panel/institutions']">Szkoły</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" [routerLink]="['/panel/partners']">Partnerzy</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" [routerLink]="['/panel/promos']">Polecane</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" [routerLink]="['/panel/recommendations']">Rekomendacje</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" [routerLink]="['/panel/slides']">Slajdy</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" [routerLink]="['/panel/updates']">Importowanie</a>
+      </li>
+      <li class="nav-item  dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="filtersNav" data-toggle="dropdown" aria-haspopup="true"
+          aria-expanded="false">
+          Pozostałe
+        </a>
+        <div class="dropdown-menu" aria-labelledby="filtersNav">
+          <a class="dropdown-item" [routerLink]="['/panel/widgets']">Inne elementy</a>
+          <a class="dropdown-item" [routerLink]="['/panel/contents']">Texty statyczne podstron</a>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div class="float-right show-web">
+    <a href="#" (click)="$event.preventDefault();logOut()">
+      Wyloguj
+    </a>
+    &nbsp;&nbsp;
+    <a [href]="apiUrl" target="_blank">
+      Podgląd strony
+    </a>
+  </div>
+
+</nav>

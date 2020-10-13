@@ -1,0 +1,25 @@
+<div class="legend-list">
+
+  <div class="col-attr-el" *ngFor="let t of types;let i=index" [ngClass]="{'disabled-type': t.selected}">
+    <div class="row-element-ico" *ngIf="checkIsTypeAttractionInCollection(t)">
+      <div class="c-icon">
+        <img [src]="apiUrl+'/img/markers/marker-attraction-'+t.type+'.png'" class="img-fluid"
+          (click)="hideShow(t.selected,i)">
+      </div>
+      <div class="c-name" (click)="hideShow(t.selected,i)">
+        {{t.name}}
+      </div>
+    </div>
+
+    <div class="row-element-ico empty-type" *ngIf="!checkIsTypeAttractionInCollection(t)">
+      <div class="c-icon">
+        <img [src]="apiUrl+'/img/markers/marker-attraction-'+t.type+'.png'" class="img-fluid">
+      </div>
+      <div class="c-name">
+        {{t.name}}
+      </div>
+    </div>
+
+  </div>
+
+</div>

@@ -1,0 +1,191 @@
+extends ../layouts/layout.pug
+
+block header
+    header.page-h(class='sezon-events')
+        .image-bg
+        .title-txt
+            h2 #{link.title}
+        .shadow-bg
+    include ../partials/submenu.pug    
+    
+
+block content
+    section.events-global(ng-controller="EventSezonController")                    
+        .double-container
+            .row
+                .col-left-double                      
+                    section.events-sezon
+                        .container
+                            .row
+                                .col-stock
+                                    each ev in events
+                                        if(ev._source.eventType=='organize')
+                                            +date_avl_class_string(ev._source.startAt,moment,ev._source.eventSezonType)
+                                                //- .col-title
+                                                //-         h2.event-name-top  #{ev.name}
+                                                .event-top
+                                                    .image-col 
+                                                        img(src=ev._source.image class="img-fluid")
+                                                    .data-col
+                                                        .event-content
+                                                            h2.event-name  #{ev._source.name}
+                                                            .date-area
+                                                                each day in ev._source.days
+                                                                    span.days-count #{day.daysNumber} dni
+                                                                +date_area_string(ev._source.startAt,ev._source.endAt,moment)
+                                                            .info-no-avl
+                                                                span.event-end oferta niedostępna
+                                                            if ev._source.status=='noavl'
+                                                                .info-full-persons
+                                                                    span.event-full aktulanie brak miejsc
+                                                            .price-data-row
+                                                                if(ev._source.priceBrutto)
+                                                                    span.price-span #{ev._source.priceBrutto.toFixed(2)} 
+                                                                        small.sufix-p zł/os   
+                                                            .desc !{ev._source.smallDesc}
+                                                            .region-row
+                                                                .region-label
+                                                                    | Region:
+                                                                .regions
+                                                                    each r in ev._source.regions
+                                                                        span.region-badge #{r.name}
+
+                                                            .region-row
+                                                                .region-label
+                                                                    | Miasta:
+                                                                .regions
+                                                                    each r in ev._source.cities
+                                                                        span.region-badge #{r.name}
+
+                                                            .region-row
+                                                                .region-label
+                                                                    | Atrakcje:
+                                                                .regions
+                                                                    each r in ev._source.attractions
+                                                                        span.region-badge #{r.name}
+
+                                                            .region-row
+                                                                .region-label
+                                                                    | Tematyka:
+                                                                .regions
+                                                                    each r in ev._source.themes
+                                                                        span.region-badge #{r.name}
+                                                            
+                                                            .ages-row
+                                                                .ages-label
+                                                                    | Wiek:
+                                                                .ages
+                                                                    each a in ev._source.ages
+                                                                        span.age-badge #{a.from} - #{a.to}
+                                                        .price-data
+                                                            if(ev._source.priceBrutto)
+                                                                span.price-span #{ev._source.priceBrutto.toFixed(2)} 
+                                                                    small.sufix-p zł/os            
+                                                .event-bottom     
+                                                    .catalog-number
+                                                        .number-c
+                                                            span.label-nr numer katalogowy:
+                                                            span.catalog-badge #{ev._source.number}
+                                                    .more-event
+                                                        a(href=ev._source.link) szczegóły oferty 
+                                        else
+                                            .event-row.template
+                                                .event-top
+                                                    .image-col 
+                                                        img(src=ev._source.image class="img-fluid")
+                                                    .data-col
+                                                        .event-content
+                                                            h2.event-name  #{ev._source.name}
+                                                            .date-area
+                                                                each day in ev._source.days
+                                                                    span.days-count #{day.daysNumber} dni
+                                                                span.date-area-str-muted wybrany przez klienta
+                                                            .price-col.mobile
+                                                                .price-data
+                                                                    button(type="button" class="prices-btn" ng-click="showPopUpPrice("+ev._source.eid+")") 
+                                                                        | Cennik 
+                                                                    .desc-prices
+                                                                        | tabela/ilość osób   
+ 
+                                                            .desc !{ev._source.smallDesc}
+                                                            .region-row
+                                                                .region-label
+                                                                    | Region:
+                                                                .regions
+                                                                    each r in ev._source.regions
+                                                                        span.region-badge #{r.name}
+
+                                                            .region-row
+                                                                .region-label
+                                                                    | Miasta:
+                                                                .regions
+                                                                    each r in ev._source.cities
+                                                                        span.region-badge #{r.name}
+
+                                                            .region-row
+                                                                .region-label
+                                                                    | Atrakcje:
+                                                                .regions
+                                                                    each r in ev._source.attractions
+                                                                        span.region-badge #{r.name}
+
+                                                            .region-row
+                                                                .region-label
+                                                                    | Tematyka:
+                                                                .regions
+                                                                    each r in ev._source.themes
+                                                                        span.region-badge #{r.name}
+                                                            
+                                                            .ages-row
+                                                                .ages-label
+                                                                    | Wiek:
+                                                                .ages
+                                                                    each a in ev._source.ages
+                                                                        span.age-badge #{a.from} - #{a.to}
+                                                        .price-col
+                                                            .price-data
+                                                                button(type="button" class="prices-btn" ng-click="showPopUpPrice("+ev._source.eid+")") 
+                                                                    | Cennik 
+                                                                .desc-prices
+                                                                    | tabela/ilość osób            
+                                                .event-bottom
+                                                    .catalog-number
+                                                        .number-c
+                                                            span.label-nr numer katalogowy:
+                                                            span.catalog-badge #{ev._source.number}
+                                                    .more-event
+                                                        a(href=ev._source.link) szczegóły oferty      
+                .col-right-double
+                    .right-content-db
+                        include ../partials/partners.pug
+        .overshadow#priceShadow
+        .edit-area(ng-if="priceConfigGroup.length>0")
+            .close-btn(ng-click='closePopUp()') x
+            .scroll-inside
+                .row-cnt
+                    .col-cnt
+                        .price-cnt-view
+                        .scroll-area()
+                            .citeria-group-row(ng-repeat='g in priceConfigGroup')
+                                .col-criteria
+                                    .group-name(ng-if="g.groupName!=''")
+                                        .name()
+                                            | [[g.groupName]]
+                                        .desc(*ngif="g.groupDesc!=''")
+                                            | [[g.groupDesc]]
+                                    .row-day(ng-repeat='d in g.daysGroups')
+                                        .col-days-info
+                                            span [[d.days]] dni
+                                        .col-day-config
+                                            .col-price-number(ng-repeat='p in d.data')
+                                                .from-to
+                                                    div
+                                                        | [[p.from]] - [[p.to]] 
+                                                        span.people-suffix osób
+                                                .price
+                                                    div
+                                                        span.price-data [[p.price]]
+                                                        span.price-suffix zł/os
+                                                            
+block footer
+    include ../partials/contact-section.pug

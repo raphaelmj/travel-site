@@ -1,0 +1,17 @@
+<div class="row">
+  <div class="col-md-2">
+    <app-input-xeditable [xValue]="menu.name"></app-input-xeditable>
+    <button type="button" class="btn btn-warning btn-full-width" (click)="saveTreeStruct()">Zapisz kolejność</button>
+    <button type="button" class="btn btn-primary btn-full-width" (click)="addLinkToMenu()">Dodaj link do menu</button>
+    <button type="button" class="btn btn-full-width" (click)="cacheMenu()"><i class="fas fa-database"></i> Cache
+      menu</button>
+  </div>
+  <div class="col-md-5">
+    <tree-root [nodes]="links" [options]="options"></tree-root>
+  </div>
+  <div class="col-md-5">
+    <ng-template #editLink></ng-template>
+  </div>
+</div>
+<hr>
+<ng-template #addLink></ng-template>

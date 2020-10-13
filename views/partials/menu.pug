@@ -1,0 +1,34 @@
+nav.menu
+    .container-menu
+        .row
+            .col-left-menu
+                | !{menus[0]}
+            .col-center-logo
+                h1
+                    a(href="/")
+                        img(src="/img/logo-shadow.png" class="img-fluid")
+            .col-right-menu
+                | !{menus[1]}
+    .search-icon-link
+        a(href="/wyszukiwanie?catalog="+currentCatalog.id+"&type=template")
+            img(src="/img/search-icon.svg", alt="")
+
+nav.menu-mobile(ng-model="menuMobile" ng-init="menuMobile='hide-mobile-menu'")            
+    .container-menu
+        .row
+            .col-logo
+                h1
+                    a(href="/")
+                        img(src="/img/logo-shadow.png" class="img-fluid")
+            .col-menu
+                .burger
+                    .line
+                    .line
+                    .line
+                    a(href="#" ng-click="$event.preventDefault();(menuMobile=='hide-mobile-menu')?(menuMobile=''):(menuMobile='hide-mobile-menu')")
+                .search-link
+                    a(href="/wyszukiwanie?catalog="+currentCatalog.id+"&type=template")
+                        img(src="/img/search-icon.svg", alt="")
+    .menu-mobile-view.hide-mobile-menu(ng-class="menuMobile")
+        | !{menus[0]}
+        | !{menus[1]}

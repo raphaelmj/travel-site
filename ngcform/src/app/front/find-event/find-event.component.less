@@ -1,0 +1,65 @@
+@import '../../../assets/colors.less';
+
+.input-cnt {
+  input {
+    border: 1px solid @filtersGray;
+    font-size: 1.1rem;
+    border-radius: 15px;
+    height: 2rem;
+    padding: 1rem 1rem 1rem 1rem;
+    // width: 290px;
+    width: 100%;
+  }
+
+  .criteria-sug-list {
+    position: relative;
+
+    .scroll-area-cnt {
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 100%;
+      background-color: @bgColor;
+      z-index: 33;
+      padding: 5px;
+      box-shadow: 5px 5px 10px @darkGray;
+      border: 1px solid @filtersGray;
+      border-radius: 12px 12px 12px 12px;
+    }
+
+    .scroll-area {
+      overflow: hidden;
+      max-height: 140px;
+      position: relative;
+      padding-right: 15px;
+
+      .sug-row {
+        display: flex;
+        flex-wrap: nowrap;
+        align-items: center;
+        padding-top: 5px;
+        padding-bottom: 5px;
+        position: relative;
+
+        .over-click {
+          position: absolute;
+          left: 0;
+          top: 0;
+          width: 100%;
+          height: 100%;
+          cursor: pointer;
+        }
+
+        .point-icon {
+          margin-right: 16px;
+          width: 34px;
+        }
+
+        .point-name {
+          width: calc(~"100% - 50px");
+        }
+      }
+    }
+  }
+
+}

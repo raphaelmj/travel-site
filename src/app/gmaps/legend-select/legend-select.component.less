@@ -1,0 +1,52 @@
+.legend-list {
+    margin-top: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+
+    @media (max-width:1600px) {
+        flex-wrap: wrap;
+        justify-content: flex-start;
+    }
+
+    .col-attr-el {
+
+        @media (max-width:1600px) {
+            width: 20%;
+            margin-bottom: 8px;
+        }
+
+        @media (max-width:1199.98px) {
+            width: 25%;
+        }
+
+        @media (max-width:767.98px) {
+            width: 33.33%;
+        }
+
+        @media (max-width:576.98px) {
+            width: 50%;
+        }
+
+        .row-element-ico {
+            display: flex;
+            flex-wrap: nowrap;
+            align-items: center;
+
+            .c-icon {
+                width: 34px;
+                margin-right: 8px;
+            }
+
+            .c-name {
+                width: calc(~"(100% - 42px)");
+            }
+        }
+    }
+
+    .col-attr-el.disabled-type {
+        filter: grayscale(1);
+        opacity: 0.8;
+    }
+}

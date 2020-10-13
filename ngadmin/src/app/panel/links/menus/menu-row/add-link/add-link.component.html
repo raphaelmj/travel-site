@@ -1,0 +1,91 @@
+<div class="overshadow" (click)="closeEdit()">
+
+</div>  
+
+<div class="edit-area">
+
+  <div class="close-btn" (click)="closeEdit()"><i class="fas fa-times"></i></div>
+
+  <div class="scroll-inside">
+
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+
+              <button mat-raised-button class="select-type" [color]="addType=='new'?'primary':''" (click)="changeType('new')">
+                  <i class="fas fa-plus"></i>
+                  <h4>Nowy pusty link</h4>
+              </button>
+
+              <button mat-raised-button class="select-type" [color]="addType=='base'?'primary':''" (click)="changeType('base')">
+                  <i class="fas fa-database"></i>
+                  <h4>Link z bazy istniejących</h4>
+              </button>
+             
+            </div>
+          </div>
+        <div class="row">
+            <div class="col-md-12">
+
+              <div class="data-link-create" *ngIf="addType=='new'">
+                  <div class="row">
+                      <div class="col-md-10">
+                        <mat-form-field class="example-full-width">
+                            <input matInput placeholder="Nazwa linku" [(ngModel)]="link_title" (keyup)="onKeyLink($event)">
+                        </mat-form-field>
+                      </div>
+                      <div class="col-md-2">
+                        <button mat-raised-button color="primary" class="example-full-width more-height" *ngIf="addType=='new' && link_title" (click)="addNewLinkToMenu()">
+                            <i class="fas fa-plus"></i>
+                        </button>
+                      </div>
+                  </div>
+
+              </div>
+              <div class="data-link-create" *ngIf="addType=='base'">
+
+
+                <div class="row">
+                    <div class="col-md-6">
+                        <mat-form-field class="example-full-width">
+                            <input matInput placeholder="Szukaj" (keyup)="onKey($event)">
+                        </mat-form-field>
+                     
+                        <div *ngFor="let item of data">
+                            <a href="#" (click)="$event.preventDefault();selectLinkToAdd(item)" class="pin-link">
+                              {{item.title}}
+                            </a>
+                        </div>  
+                    </div>
+                    <div class="col-md-6" *ngIf="link">
+                        <span class="badge badge-success">
+                            Link do dodania
+                        </span>
+                        <h4 class="">{{link.title}}</h4>
+                        <button mat-raised-button color="primary" class="example-full-width more-height" *ngIf="addType=='base' && link" (click)="addLinkToMenu()">
+                                <i class="fas fa-thumbtack"></i> Dodaj link do menu
+                        </button>
+                    </div>
+                </div>
+
+
+              </div>
+             
+            </div>
+        </div>  
+
+    </div>
+
+
+
+
+  </div>
+
+  <div class="row">
+        <div class="col-md-12">
+            <!-- <button class="btn btn-primary btn-full-width" *ngIf="addType=='new' && link_title" (click)="addNewLinkToMenu()">Utwórz link i dodaj do menu</button>
+            <button class="btn btn-primary btn-full-width" *ngIf="addType=='base' && link" (click)="addLinkToMenu()">Dodaj link do menu</button> -->
+        </div>
+    </div>
+
+</div>  

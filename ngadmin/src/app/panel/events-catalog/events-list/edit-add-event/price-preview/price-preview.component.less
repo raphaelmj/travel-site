@@ -1,0 +1,176 @@
+@import '../../../../../../assets/colors.less';
+
+.row-cnt {
+  display: flex;
+  align-items: center;
+  // height: 48vh;
+
+  .col-cnt {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    // flex-direction: row;
+  }
+}
+
+.citeria-group-row {
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 32px;
+
+  .col-criteria {
+    color: #FFF;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+
+    .group-name {
+      border-top: 1px solid #000;
+      border-right: 1px solid #000;
+      border-left: 1px solid #000;
+      background-color: @orange;
+      padding: 20px;
+      display: flex;
+      align-items: flex-start;
+
+      .name {
+        width: 20%;
+        margin-right: 16px;
+      }
+
+      .name.width-100 {
+        width: 100%;
+        margin-right: 0;
+      }
+
+      .desc {}
+    }
+  }
+}
+
+
+
+.row-day {
+  display: flex;
+  flex-direction: row;
+  // margin-bottom: 32px;
+
+  .col-days-info {
+    border-top: 1px solid #000;
+    border-bottom: 1px solid #000;
+    border-right: 1px solid #000;
+    border-left: 1px solid #000;
+    background-color: @mediumGreen;
+    color: #FFF;
+    width: 100px;
+    display: flex;
+    align-items: center;
+
+    span {
+      width: 100%;
+      text-align: center;
+    }
+  }
+
+  .col-day-config {
+    display: flex;
+    flex-wrap: wrap;
+    width: calc(~"100% - 100px");
+    border-top: 1px solid #000;
+
+    .col-price-number {
+      width: 25%;
+      border-bottom: 1px solid #000;
+      border-right: 1px solid #000;
+      text-align: center;
+
+      .from-to {
+        background-color: @grayFont;
+        border-bottom: 1px solid #000;
+        color: #ffffff;
+        display: flex;
+        align-items: center;
+        height: 50px;
+
+        div {
+          width: 100%;
+          text-align: center;
+        }
+      }
+
+      .price {
+
+        background-color: @bgColor;
+        color: @bordo;
+        display: flex;
+        align-items: center;
+        height: 50px;
+
+        div {
+          width: 100%;
+          text-align: center;
+        }
+      }
+    }
+  }
+}
+
+.row-day:nth-child(n+2) {
+  .col-days-info {
+    border-top: none;
+  }
+}
+
+.row-table {
+  display: grid;
+  // grid-template: none !important;
+
+  .table-col {
+    text-align: center;
+    padding-top: 20px;
+    padding-bottom: 20px;
+  }
+}
+
+.row-table.header {
+  border-top: 1px solid @darkGreen;
+  border-left: 1px solid @darkGreen;
+  border-right: 1px solid @darkGreen;
+
+  .table-col {
+    border-right: 1px solid @darkGreen;
+    background-color: @mediumGreen;
+    color: #FFF;
+
+    span.people-suffix {}
+  }
+
+  .table-col:last-child {
+    border-right: none;
+  }
+}
+
+.row-table.body {
+  border-bottom: 1px solid @darkGreen;
+  border-left: 1px solid @darkGreen;
+  border-right: 1px solid @darkGreen;
+
+  .table-col {
+    border-top: 1px solid @darkGreen;
+    border-right: 1px solid @darkGreen;
+
+    span.price-data {
+      color: @bordo;
+    }
+
+    span.price-suffix {}
+
+  }
+
+  .table-col:last-child {
+    border-right: none;
+  }
+
+
+
+}

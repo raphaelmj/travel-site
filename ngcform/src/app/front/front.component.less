@@ -1,0 +1,52 @@
+@import '../../assets/colors.less';
+
+.form-container.form-rel-cnt {
+  position: relative;
+
+  .col-input-files {
+    min-height: 60px;
+
+    .mime-types {
+      margin-top: 5px;
+
+      span.types-list {
+        color: @grayFont;
+        font-style: italic;
+      }
+    }
+  }
+
+  .loading-over {
+    position: absolute;
+    left: 0;
+    top: 0%;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(252, 255, 251, 0.7);
+    z-index: 11;
+
+    img {
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+      margin-top: calc(~"(50% - 64px) / 2");
+
+    }
+
+    h2 {
+      text-align: center;
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+      margin-top: calc(~"(50% - 64px) / 2");
+      font-size: 1.2rem;
+      color: #000;
+    }
+  }
+}
+
+
+.alert-valiadation {
+  padding: 8px 0 8px 0;
+  color: @bordo;
+}

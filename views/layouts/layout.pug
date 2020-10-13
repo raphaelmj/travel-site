@@ -1,0 +1,46 @@
+include ../mixins.pug
+doctype html
+html(ng-app="app")
+  head
+    meta(charset="utf-8")
+    meta(name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no")
+    if(link.metaDesc && link.metaDesc!='')
+      meta(name="description" content=link.metaDesc)
+    if(link.metaKeywords && link.metaKeywords !='')
+      meta(name="keywords" content=link.metaKeywords)
+    link(rel='icon' type='image/x-icon' href='/favicon.ico')
+    base(href=path)
+    title 
+      | Wirtur
+      if(link.metaTitle && link.metaTitle!='')
+        | - #{link.metaTitle}
+      else
+        if(link.dataType!='home')
+          | - #{link.title}  
+    include ../partials/styles.pug
+  body(ng-controller="BodyController")
+    include ../partials/menu.pug
+    block header
+    block content
+    block footer
+    include ../partials/footer.pug
+    include ../partials/cookie-beam.pug
+    include ../partials/facebook-like.pug
+    #fb-root
+    script.
+      window.fbAsyncInit = function () {
+      FB.init({
+      xfbml: true,
+      version: 'v3.3'
+      });
+      };
+      (function (d, s, id) {
+      var js, fjs = d.getElementsByTagName(s)[0];
+      if (d.getElementById(id)) return;
+      js = d.createElement(s);
+      js.id = id;
+      js.src = 'https://connect.facebook.net/pl_PL/sdk/xfbml.customerchat.js';
+      fjs.parentNode.insertBefore(js, fjs);
+      }(document, 'script', 'facebook-jssdk'));
+    .fb-customerchat(attribution='setup_tool' page_id='614557392317728' theme_color='')
+    include ../partials/scripts.pug

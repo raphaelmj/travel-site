@@ -1,0 +1,18 @@
+section.intro-search
+    .container-one
+        .row
+            .col-pdf-catalog
+                img(src=currentCatalog.image.path, alt="" class="img-fluid")
+                a(href=currentCatalog.attachFile target="_blank")
+                    i.far.fa-file-pdf
+
+            .col-search-icon
+                a(href="/wyszukiwanie?catalog="+currentCatalog.id+"&type=template")
+                    img(src="/img/search-icon.svg", alt="")
+            .col-search-catalog-link
+                .row-search-more
+                    .col-text
+                        h2 Przeszukuj aktualny katalog 
+                        span.catalog-name (#{currentCatalog.name})
+                    .col-btn
+                        a(href="/wyszukiwanie?catalog="+currentCatalog.id+"&type=template") 

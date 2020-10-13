@@ -1,0 +1,137 @@
+.overshadow {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.9);
+  z-index: 10;
+}
+
+.edit-area {
+  position: fixed;
+  left: 2vw;
+  top: 2vh;
+  width: 96vw;
+  height: 96vh;
+  background: #FFF;
+  z-index: 11;
+  padding: 2vh 2vw 2vh 2vw;
+
+  .scroll-inside {
+    width: 92vw;
+    height: 92vh;
+    overflow-y: scroll;
+  }
+
+  button.select-type {
+    width: 100%;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    margin-bottom: 10px;
+
+    i {
+      font-size: 2rem;
+    }
+  }
+
+  .close-btn {
+    position: absolute;
+    right: 0;
+    top: -1vh;
+    background: #FFF;
+    border-radius: 90px;
+    width: 50px;
+    height: 50px;
+    text-align: center;
+    box-shadow: 0 0 10px #000;
+    cursor: pointer;
+    font-size: 2rem;
+    z-index: 12;
+  }
+
+}
+
+
+.gallery-view {
+  position: relative;
+  padding: 0;
+  margin-bottom: 20px;
+
+
+  .edit-gal-bt {
+    position: absolute;
+    margin: 0;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 3;
+    text-align: center;
+    padding-top: 30%;
+
+    i {
+      // display: none;
+    }
+  }
+
+  h6 {
+    position: absolute;
+    margin: 0;
+    left: 0;
+    bottom: 0;
+    color: #FFF;
+    background: rgba(0, 0, 0, 0.6);
+    width: 100%;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    text-align: center;
+    text-shadow: 1px 1px 0 #000;
+    z-index: 2;
+  }
+}
+
+.gallery-view.active-over {
+  .edit-gal-bt {
+    background: rgba(0, 0, 0, 0.6);
+    color: #FFF;
+
+    cursor: pointer;
+
+    i {}
+  }
+}
+
+.gird-cnt {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-gap: 15px;
+}
+
+
+.gallery-image {
+  padding: 20px;
+  background-color: #CCC;
+  margin-bottom: 20px;
+  position: relative;
+
+  button.remove-image {
+    position: absolute;
+    right: 0;
+    top: 0;
+    z-index: 11;
+  }
+}
+
+
+
+/deep/ .ngx-file-drop__drop-zone-label {
+  border: 1px dashed #CCC;
+  text-align: center;
+  height: 280px;
+  font-size: 1.2rem;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

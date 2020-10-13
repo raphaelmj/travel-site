@@ -1,0 +1,20 @@
+<div class="row">
+  <div class="col-md-12">
+    <button type="button" class="btn btn-primary btn-lg" (click)="addReco()">
+      Dodaj <i class="fas fa-plus"></i>
+    </button>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-12">
+    <hr>
+  </div>
+</div>
+<div class="row" id="sortRecos">
+  <div class="col-md-3" *ngFor="let r of recos">
+    <app-recommendation-row [reco]="r" (editStart)="openEdit($event)" (deleteStart)="startDelete($event)">
+    </app-recommendation-row>
+  </div>
+</div>
+<ng-template #editTemp></ng-template>
+<ng-template #remove></ng-template>

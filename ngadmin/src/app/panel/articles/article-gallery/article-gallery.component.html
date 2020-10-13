@@ -1,0 +1,45 @@
+<div class="overshadow" (click)="closeEdit()">
+
+</div>
+
+<div class="edit-area">
+
+
+  <div class="close-btn" (click)="closeEdit()"><i class="fas fa-times"></i></div>
+
+  <div class="scroll-inside">
+
+    <div class="container-fluid">
+
+      <div class="row">
+        <div class="col-md-12">
+          <ngx-file-drop dropZoneClassName="filedrop" contentClassName="contentDrop" dropZoneLabel="Upuść pliki"
+            accept="png" (onFileDrop)="dropped($event)">
+          </ngx-file-drop>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-12">
+
+          <div id="sortGrid" class="row">
+            <div class="col-md-3" *ngFor="let img of images;let i = index">
+              <div class="gallery-image">
+                <button class="remove-image btn btn-danger" (click)="removeImage(i)">
+                  <i class="fas fa-trash"></i>
+                </button>
+                <img [src]="apiUrl+'/'+img.image" class="img-fluid">
+              </div>
+
+            </div>
+          </div>
+
+
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+
+</div>

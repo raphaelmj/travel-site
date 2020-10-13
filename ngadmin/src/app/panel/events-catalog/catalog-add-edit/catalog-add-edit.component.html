@@ -1,0 +1,105 @@
+<div class="overshadow" (click)="closeEdit()">
+
+</div>
+
+<div class="edit-area">
+
+
+  <div class="close-btn" (click)="closeEdit()"><i class="fas fa-times"></i></div>
+
+  <div class="scroll-inside">
+
+    <div class="loading-view" *ngIf="isUpdate">
+      <mat-progress-spinner class="example-margin" [color]="'primary'" [mode]="'indeterminate'" [value]="50">
+      </mat-progress-spinner>
+    </div>
+
+    <div class="container-fluid">
+
+      <div class="row">
+        <div class="col-md-12">
+
+          <form [formGroup]="catalogForm" (submit)="saveData()">
+
+            <div class="row">
+              <div class="col-md-3">
+                <img [src]="apiUrl+catalog.image?.path" class="img-fluid" *ngIf="!croppedImage && catalog.image?.path">
+                <img [src]="croppedImage" class="img-fluid" *ngIf="croppedImage">
+                <div>
+                  <button type="button" class="btn btn-warning" (click)="openEdit()">
+                    <i class="fas fa-image"></i>
+                  </button>
+                  <button type="button" class="btn btn-success" (click)="backBasePhoto()">
+                    <i class="fas fa-redo"></i>
+                  </button>
+                </div>
+              </div>
+              <div class="col-md-9">
+                <mat-form-field class="example-full-width">
+                  <input matInput placeholder="Tytył" formControlName="name">
+                </mat-form-field>
+                <mat-slide-toggle class="example-margin" formControlName="current">
+                  Aktualny katalog
+                </mat-slide-toggle>
+                <mat-slide-toggle class="example-margin" formControlName="searchList">
+                  Na liście wyszukiwania
+                </mat-slide-toggle>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-md-12">
+                <hr>
+              </div>
+            </div>
+
+
+            <div class="row">
+              <div class="col-md-6">
+                <label for="filePdf">
+                  Wybierz pdf
+                  <input type="file" id="filePdf" #filePdf (change)="handleFileInput($event.target.files,'pdf')"
+                    accept="application/pdf">
+                </label>
+
+
+              </div>
+              <div class="col-md-6">
+                <div class="path-to-file">
+                  <mat-form-field class="example-full-width">
+                    <input matInput placeholder="Tytył" formControlName="attachFile">
+                  </mat-form-field>
+                  <button type="button" class="btn btn-warning" (click)="resetFile()">
+                    <i class="fas fa-redo-alt"></i> przywróć/resetuj
+                  </button>
+                </div>
+              </div>
+            </div>
+
+
+            <div class="row">
+              <div class="col-md-12">
+                <hr>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-md-12">
+                <button class="btn btn-primary btn-save btn-lg">
+                  Zapisz
+                </button>
+              </div>
+            </div>
+
+
+          </form>
+
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
+<ng-template #imagePopup></ng-template>

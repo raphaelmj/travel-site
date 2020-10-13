@@ -1,0 +1,79 @@
+<div class="overshadow" (click)="closePopUp()">
+
+</div>
+
+<div class="edit-area">
+
+
+  <div class="close-btn" (click)="closePopUp()">x</div>
+
+  <div class="scroll-inside">
+
+    <div class="row-cnt">
+      <div class="col-cnt">
+        <!-- <div class="row-table header"
+          [ngStyle]="{'grid-template-columns': 'repeat('+eventElement.priceConfig.length+','+eventElement.priceConfig.length+'fr)'}">
+          <div class="table-col" *ngFor="let ft of eventElement.priceConfig">
+            {{ft.from}} - {{ft.to}} <span class="people-suffix">osób</span>
+          </div>
+
+        </div>
+
+
+        <div class="row-table body"
+          [ngStyle]="{'grid-template-columns': 'repeat('+eventElement.priceConfig.length+','+eventElement.priceConfig.length+'fr)'}">
+          <div class="table-col" *ngFor="let p of eventElement.priceConfig">
+            <span class="price-data">{{p.price|priceView}}</span>&nbsp;<span class="price-suffix">zł/os</span>
+          </div>
+        </div> -->
+        <!-- {{priceConfigGroup|json}} -->
+        <div class="price-cnt-view">
+          <div [perfectScrollbar]="{}" class="scroll-area" [disabled]="false">
+
+            <div class="citeria-group-row" *ngFor="let g of priceConfigGroup">
+              <div class="col-criteria">
+                <div class="group-name" *ngIf="g.groupName!=''">
+                  <div class="name" [ngClass]="{'width-100': g.groupDesc==''}">
+                    {{g.groupName}}
+                  </div>
+                  <div class="desc" *ngIf="g.groupDesc!=''" [innerHtml]="g.groupDesc"></div>
+                </div>
+                <div class="row-day" *ngFor="let d of g.daysGroups">
+
+                  <div class="col-days-info">
+                    <span>{{d.days}} dni</span>
+                  </div>
+                  <div class="col-day-config">
+                    <div class="col-price-number" *ngFor="let pc of d.data">
+                      <div class="from-to">
+                        <div>{{pc.from}} - {{pc.to}} <span class="people-suffix">osób</span></div>
+                      </div>
+                      <div class="price">
+                        <div><span class="price-data">{{pc.price|priceView}}</span>&nbsp;<span
+                            class="price-suffix">zł/os</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                </div>
+
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+
+
+
+
+
+
+      </div>
+    </div>
+
+
+  </div>
+
+</div>

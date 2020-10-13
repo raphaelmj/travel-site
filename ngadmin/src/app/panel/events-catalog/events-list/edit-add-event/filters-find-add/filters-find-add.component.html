@@ -1,0 +1,72 @@
+<div class="row row-filters">
+  <div class="col-md-4">
+    <div [perfectScrollbar]="{}" class="scroll-area-woj" [disabled]="false">
+      <div *ngFor="let r of regions;let i = index" class="region-element"
+        [ngClass]="{'el-added': r.added, 'open-els':regionSelected?.id==r.id}">
+
+
+        <div class="name" (click)="showCA(r)">
+          <span>{{r.name}}</span>
+        </div>
+
+        <div class="action-btns">
+          <button type="button" class="btn btn-success btn-sm" *ngIf="!r.added" (click)="addRegion(r,i)">
+            <i class="fas fa-plus"></i>
+          </button>
+          <button type="button" class="btn btn-light btn-sm" (click)="showCA(r)">
+            <i class="fas fa-folder-open"></i>
+          </button>
+        </div>
+
+
+      </div>
+    </div>
+  </div>
+  <div class="col-md-8">
+
+    <div class="row">
+      <div class="col-md-12">
+        <div [perfectScrollbar]="{}" class="scroll-area" [disabled]="false">
+          <h4 *ngIf="attractions?.length>0" class="title">Miasta</h4>
+          <div class="element-sub" *ngFor="let c of cities;let i = index" [ngClass]="{'el-added': c.added}">
+
+            <div class="name">
+              <span>{{c.name}}</span>
+            </div>
+
+            <div class="action-btns">
+              <button type="button" class="btn btn-success btn-sm" *ngIf="!c.added" (click)="addCity(c,i)">
+                <i class="fas fa-plus"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+    <div class="row" *ngIf="attractions?.length>0">
+      <div class="col-md-12">
+        <hr>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+        <div [perfectScrollbar]="{}" class="scroll-area" [disabled]="false">
+          <h4 *ngIf="attractions?.length>0" class="title">Atrakcje</h4>
+          <div class="element-sub" *ngFor="let a of attractions;let i = index" [ngClass]="{'el-added': a.added}">
+            <div class="name">
+              <span>{{a.name}}</span>
+            </div>
+
+            <div class="action-btns">
+              <button type="button" class="btn btn-success btn-sm" *ngIf="!a.added" (click)="addAttraction(a,i)">
+                <i class="fas fa-plus"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>

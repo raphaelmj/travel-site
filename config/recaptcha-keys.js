@@ -1,0 +1,3 @@
+export const CAPTACHA_WEB_KEY = "6LdrnMwUAAAAAHl4oHC0Gi8xaHMPIM0OeGVktYhB"
+export const CAPTACHA_SECRET_KEY = "6LdrnMwUAAAAABdZOqfaCrNN4ZNWCqH2IWjwu0Oj"
+module.exports = { webKey: CAPTACHA_WEB_KEY, secretKey: CAPTACHA_SECRET_KEY }

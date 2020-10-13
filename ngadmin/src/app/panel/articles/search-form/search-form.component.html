@@ -1,0 +1,18 @@
+<div class="row">
+  <div class="col-md-4">
+    <form [formGroup]="phraseForm">
+      <mat-form-field class="example-full-width">
+        <input matInput placeholder="Fraza" formControlName="phrase">
+      </mat-form-field>
+    </form>
+  </div>
+  <div class="col-md-4">
+    <mat-form-field>
+      <mat-select [value]="category$">
+        <mat-option *ngFor="let c of categories" [value]="c" (onSelectionChange)="changeCurrentCategory($event, c)">
+          {{c.name}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+</div>

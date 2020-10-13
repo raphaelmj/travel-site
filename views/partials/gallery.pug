@@ -1,0 +1,8 @@
+div(class="swp-gallery" itemscope itemtype="http://schema.org/ImageGallery")
+    each g in microGallery
+        figure(class="swp-gal-col" itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject")
+            a(href=g.image itemprop="contentUrl" data-size=g.sizeString class="thumbnail")
+                span.thumb-image
+                    img(src="/images/blank.gif" data-src=g.image data-srcset=g.image itemprop="thumbnail" class="lazy img-fluid" alt="")
+            //- figcaption(itemprop="caption description")
+            //-     | #{g.imgDesc}

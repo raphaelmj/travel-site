@@ -1,0 +1,19 @@
+<form [formGroup]="formFilters">
+  <div class="row">
+    <div class="col-md-3">
+      <mat-form-field class="w-100">
+        <input matInput placeholder="Numer katalogowy" formControlName="phrase">
+      </mat-form-field>
+    </div>
+    <div class="col-md-3">
+      <mat-form-field class="w-100">
+        <mat-label>Typ</mat-label>
+        <mat-select formControlName="type">
+          <mat-option *ngFor="let t of types" [value]="t.value">
+            {{t.name}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+  </div>
+</form>

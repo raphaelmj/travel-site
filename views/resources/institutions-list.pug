@@ -1,0 +1,28 @@
+extends ../layouts/layout.pug
+
+block header
+    include ../partials/banner-attachments.pug
+    include ../partials/submenu.pug
+    
+block content
+    section.institutions
+        .container-one.institutions
+            .row
+                .col-inst
+                    each rec,i in institutions
+                        .row-in
+                            .info-in
+                                h2 #{rec.name}
+                            .tour-target
+                                i.fas.fa-map-marker-alt 
+                                | &nbsp;
+                                | !{rec.tourTarget}    
+                            .desc-in
+                                | !{rec.description}    
+
+
+    include ../partials/partners-horizontal.pug
+
+block footer
+    include ../partials/contact-section.pug
+    include ../partials/pswp.pug

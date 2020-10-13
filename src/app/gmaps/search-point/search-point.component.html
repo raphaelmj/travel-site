@@ -1,0 +1,25 @@
+<div class="form-cnt">
+  <form [formGroup]="searchForm">
+    <input type="text" formControlName="phrase" placeholder="Szukaj po nazwie" id="inputSugCri" autocomplete="off">
+  </form>
+  <div class="criteria-sug-list" *ngIf="suggestsCriterias.length>0">
+    <div class="scroll-area-cnt">
+      <div [perfectScrollbar]="{}" class="scroll-area">
+        <div class="sug-row" *ngFor="let sc of suggestsCriterias">
+          <div class="point-icon">
+            <img [src]="apiUrl+'/img/markers/marker-city.png'" *ngIf="sc._source.baseType=='city'">
+            <img [src]="apiUrl+'/img/markers/marker-attraction-'+sc._source.localType+'.png'"
+              *ngIf="sc._source.baseType=='attraction'">
+          </div>
+          <div class="point-name">
+            {{sc._source.name}}
+          </div>
+          <div class="over-click" (click)="showPoint(sc)">
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>

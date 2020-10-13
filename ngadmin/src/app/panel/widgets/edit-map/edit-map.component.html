@@ -1,0 +1,42 @@
+<div class="overshadow" (click)="closeEdit()">
+
+</div>
+
+<div class="edit-area">
+
+
+  <div class="close-btn" (click)="closeEdit()"><i class="fas fa-times"></i></div>
+
+  <div class="scroll-inside">
+
+    <div class="container-fluid">
+
+      <div class="row">
+        <div class="col-md-12">
+
+          <form [formGroup]="formEdit" (submit)="saveData()">
+
+            <div class="container-fluid">
+
+              <div class="row">
+                <div class="col-md-12">
+                  <h4>Instrukacja</h4>
+                  <ckeditor formControlName="content" [config]="ckEditorConfig"></ckeditor>
+                </div>
+              </div>
+
+            </div>
+
+            <button class="btn btn-success btn-lg btn-save">Zapisz</button>
+
+          </form>
+
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
+<ng-template #imagePopup></ng-template>

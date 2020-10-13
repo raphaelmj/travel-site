@@ -1,0 +1,159 @@
+<div class="row">
+  <div class="col-md-12">
+    <div *ngIf="menu">
+      <button type="button" class="btn btn-warning btn-full-width" (click)="deleteFromMenu()">
+        <i class="fas fa-thumbtack"></i> Odepnij link (id:{{linkData?.link?.id}}) od menu {{menu?.name}}
+      </button>
+    </div>
+  </div>
+</div>
+<hr *ngIf="menu">
+<form [formGroup]="linkForm" (submit)="saveLinkData()">
+  <div class="row">
+    <div class="col-md-12">
+      <span class="badge badge-success">id:</span> {{linkData?.link?.id}}
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+      <h2 class="edit-link">
+        <mat-form-field class="example-full-width">
+          <input matInput placeholder="Nazwa linku" formControlName="title">
+        </mat-form-field>
+      </h2>
+    </div>
+  </div>
+
+  <!-- <div class="link-view-info row" *ngIf="type=='article'">
+    <div class="view-link-data col-md-9" *ngIf="article">
+      <span class="badge badge-success">Artykuł:</span> {{article.title}}
+    </div>
+    <div class="view-link-data col-md-9" *ngIf="!article">
+      <span class="badge badge-danger">Link bez określonego typu</span>
+    </div>
+    <div class="col-md-3">
+      <button mat-raised-button type="button" (click)="showLinkTypeEditPopUp()"><i
+          class="fas fa-pencil-alt"></i></button>
+    </div>
+  </div>
+
+  <div class="link-view-info row" *ngIf="type=='category'">
+    <div class="view-link-data col-md-9" *ngIf="category">
+      <span class="badge badge-success">Kategoria:</span> {{category.name}}
+    </div>
+    <div class="view-link-data col-md-9" *ngIf="!category">
+      <span class="badge badge-danger">Link bez określonego typu</span>
+    </div>
+    <div class="col-md-3">
+      <button mat-raised-button type="button" (click)="showLinkTypeEditPopUp()"><i
+          class="fas fa-pencil-alt"></i></button>
+    </div>
+  </div>
+
+
+  <div class="link-view-info row" *ngIf="type=='external-link'">
+    <div class="view-link-data col-md-9">
+      <span class="badge badge-success">Link:</span> {{link.external_link}}
+      <mat-form-field class="example-full-width">
+        <input matInput placeholder="Zewnętrzny url" formControlName="externalLink">
+      </mat-form-field>
+    </div>
+    <div class="col-md-3">
+      <button mat-raised-button type="button" (click)="showLinkTypeEditPopUp()"><i
+          class="fas fa-pencil-alt"></i></button>
+    </div>
+  </div>
+
+  <div class="link-view-info row" *ngIf="type=='home'">
+    <div class="view-link-data col-md-9">
+      <span class="badge badge-success">Link:</span> Home
+    </div>
+    <div class="col-md-3">
+      <button mat-raised-button type="button" (click)="showLinkTypeEditPopUp()"><i
+          class="fas fa-pencil-alt"></i></button>
+    </div>
+  </div>
+
+  <div class="link-view-info row" *ngIf="type=='events'">
+    <div class="view-link-data col-md-9">
+      <span class="badge badge-success">Link:</span> Events
+    </div>
+    <div class="col-md-3">
+      <button mat-raised-button type="button" (click)="showLinkTypeEditPopUp()"><i
+          class="fas fa-pencil-alt"></i></button>
+    </div>
+  </div>
+
+  <div class="link-view-info row" *ngIf="type=='blank'">
+    <div class="view-link-data col-md-9">
+      <span class="badge badge-danger">Link bez określonego typu</span>
+    </div>
+    <div class="col-md-3">
+      <button mat-raised-button type="button" (click)="showLinkTypeEditPopUp()"><i
+          class="fas fa-pencil-alt"></i></button>
+    </div>
+  </div>
+  <br>
+
+  <div class="link-view-info row" *ngIf="type=='contact'">
+    <div class="view-link-data col-md-9">
+      <span class="badge badge-primary">Kontakt</span>
+    </div>
+    <div class="col-md-3">
+      <button mat-raised-button type="button" (click)="showLinkTypeEditPopUp()"><i
+          class="fas fa-pencil-alt"></i></button>
+    </div>
+  </div> -->
+  <br>
+
+
+  <div class="path-view" *ngIf="type!='external-link'">
+    <i class="fas fa-link"></i> Aktualna ścieżka: <a href="{{domain}}/{{link?.path}}" target="_blank"><span
+        class="badge badge-primary">{{link?.path}}</span></a>
+    <br>
+    <mat-form-field class="example-full-width">
+      <input matInput placeholder="Scieżka" formControlName="path">
+    </mat-form-field>
+  </div>
+  <div *ngIf="linkForm.get('path').errors?.pathTaken" class="error">
+    Scieżka zajęta
+  </div>
+  <div *ngIf="type!='external-link'">
+    <mat-form-field class="example-full-width">
+      <textarea matInput placeholder="Alernatywny title" formControlName="metaTitle"></textarea>
+    </mat-form-field>
+    <mat-form-field class="example-full-width">
+      <textarea matInput placeholder="Słowa kluczowe" formControlName="metaKeywords"></textarea>
+    </mat-form-field>
+    <mat-form-field class="example-full-width">
+      <textarea matInput placeholder="Meta opis" formControlName="metaDesc"></textarea>
+    </mat-form-field>
+    <!-- <mat-form-field class="example-full-width">
+      <input matInput placeholder="Alternatwyny widok nazwa" formControlName="view">
+    </mat-form-field>
+    <div class="alert alert-light" role="alert">
+      Jeżeli pozostaje pusty - przypisany jest domyślny widok dla typu -
+      możesz wybrać listę menu używanych w wybranej nazwie nowego widoku
+    </div> -->
+  </div>
+  <!-- <mat-form-field class="example-chip-list" *ngIf="type!='external-link'">
+    <mat-chip-list #chipList>
+      <mat-chip *ngFor="let ms of menus" [selectable]="selectable" [removable]="removable" (removed)="remove(ms)">
+        {{ms.name}}
+        <mat-icon matChipRemove *ngIf="removable"><i class="fas fa-minus"></i></mat-icon>
+      </mat-chip>
+      <input placeholder="Menu do użytku podczas generowania np: alernatywnego widoku" #menuInput
+        [formControl]="menusCtrl" [matAutocomplete]="auto" [matChipInputFor]="chipList"
+        [matChipInputSeparatorKeyCodes]="separatorKeysCodes" [matChipInputAddOnBlur]="addOnBlur"
+        (matChipInputTokenEnd)="add($event)" (focus)="changeCollectInput($event)">
+    </mat-chip-list>
+    <mat-autocomplete #auto="matAutocomplete" (optionSelected)="selected($event)">
+      <mat-option *ngFor="let ms of filterMenus | async" [value]="ms">
+        {{ms.name}}
+      </mat-option>
+    </mat-autocomplete>
+  </mat-form-field> -->
+  <button mat-raised-button class="example-full-width" color="primary">Zapisz</button>
+</form>
+
+<ng-template #editLinkType></ng-template>

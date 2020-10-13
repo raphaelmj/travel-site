@@ -1,0 +1,54 @@
+<div class="row">
+  <div class="col-md-12">
+    <ngx-file-drop dropZoneClassName="filedrop" contentClassName="contentDrop" dropZoneLabel="Upuść pliki" accept=".zip"
+      (onFileDrop)="dropped($event)" [multiple]="false">
+    </ngx-file-drop>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-12">
+    <hr *ngIf="nowUploadFolder">
+    <div class="folder" *ngIf="nowUploadFolder">
+      <div class="name">
+        <h5 class="title">
+          Aktualny
+        </h5>
+        {{nowUploadFolder}}
+      </div>
+      <div class="action-bt">
+        <button type="button" class="btn btn-danger btn-sm" (click)="removeFolder(nowUploadFolder,true)">
+          <i class="fas fa-minus"></i>
+        </button>
+        <button type="button" class="btn btn-warning btn-sm" (click)="startUpdate(nowUploadFolder)">
+          <i class="fas fa-database"></i> Zacznij update
+        </button>
+      </div>
+    </div>
+
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-12">
+    <hr>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-12">
+    <div class="folders-list">
+      <div class="folder" *ngFor="let f of folders">
+        <div class="name">
+          {{f}}
+        </div>
+        <div class="action-bt">
+          <button type="button" class="btn btn-danger btn-sm" (click)="removeFolder(f,false)">
+            <i class="fas fa-minus"></i>
+          </button>
+          <button type="button" class="btn btn-warning btn-sm" (click)="startUpdate(f)">
+            <i class="fas fa-database"></i> Zacznij update
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<ng-template #temp></ng-template>

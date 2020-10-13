@@ -1,0 +1,23 @@
+<div class="row">
+  <div class="col-md-12">
+    <a [routerLink]="[ '/panel/links/menus' ]" class="btn btn-warning"><i class="fas fa-bars"></i> Linki Grupowane w Menu</a>
+  </div>
+</div>
+<hr>
+<div class="row">
+  <div class="col-md-6">
+      <ng-template #treeLinks></ng-template>
+  </div>
+  <div class="col-md-6">
+    <ng-template #editLink></ng-template>
+  </div>
+</div>
+<!-- <div class="row">
+  <div class="col-md-12" *ngFor="let l of links">
+    <app-link-row [link]="l"></app-link-row>
+  </div>
+</div> -->
+<ng-template #customTemplate></ng-template>
+
+
+<!-- <app-root-custom-tree [links]="links"></app-root-custom-tree> -->

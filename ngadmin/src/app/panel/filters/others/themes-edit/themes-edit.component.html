@@ -1,0 +1,22 @@
+<div class="row">
+  <div class="col-md-11">
+    <div class="tag-view-cnt">
+      <div class="tag-view" *ngFor="let t of themes">
+        {{t.name}}
+        <button type="button" class="btn" (click)="updateData(t)">
+          <i class="fas fa-edit"></i>
+        </button>
+        <button type="button" class="btn" (click)="beforeDelete(t)">
+          <i class="far fa-trash-alt"></i>
+        </button>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-1">
+    <button type="button" class="btn btn-success btn-lg" (click)="addTheme()">
+      <i class="fas fa-plus"></i>
+    </button>
+  </div>
+</div>
+<ng-template #editTemp></ng-template>
+<ng-template #confirm></ng-template>

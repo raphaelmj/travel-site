@@ -1,0 +1,102 @@
+<div class="overshadow" (click)="closeEdit()">
+
+</div>
+
+<div class="edit-area">
+
+  <div class="close-btn" (click)="closeEdit()"><i class="fas fa-times"></i></div>
+
+  <div class="scroll-inside">
+
+
+    <form [formGroup]="formPrice">
+
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="price-config-cnt">
+              <div formArrayName="priceConfig"
+                *ngFor="let item of formPrice.get('priceConfig').controls; let i = index;" class="row-group">
+                <div [formGroupName]="i" class="col-group">
+                  <button type="button" class="btn btn-success btn-sm" (click)="addGroup()">
+                    <i class="fas fa-plus"></i>
+                  </button>
+                  <mat-form-field class="w-100">
+                    <mat-label>Nazwa grupy</mat-label>
+                    <input matInput placeholder="Nazwa grupy" formControlName="groupName">
+                  </mat-form-field>
+
+                  <mat-form-field class="w-100">
+                    <mat-label>Opis grupy</mat-label>
+                    <textarea matInput placeholder="Nazwa grupy" formControlName="groupDesc"></textarea>
+                  </mat-form-field>
+
+                  <button type="button" class="btn btn-success btn-sm btn-plus-price" (click)="addGroupPrice(i)">
+                    <i class="fas fa-plus"></i>
+                  </button>
+
+                  <div formArrayName="prices"
+                    *ngFor="let item of formPrice.get('priceConfig').controls[i].get('prices').controls; let j = index;"
+                    class="array-prices">
+
+                    <div class="row-price">
+                      <div class="col-inputs">
+                        <div [formGroupName]="j" class="row row-prices">
+                          <div class="col-md-3">
+                            <mat-form-field class="w-100">
+                              <mat-label>Od</mat-label>
+                              <input matInput placeholder="Od" formControlName="from">
+                            </mat-form-field>
+                          </div>
+                          <div class="col-md-3">
+                            <mat-form-field class="w-100">
+                              <mat-label>Do</mat-label>
+                              <input matInput placeholder="Do" formControlName="to">
+                            </mat-form-field>
+                          </div>
+                          <div class="col-md-3">
+                            <mat-form-field class="w-100">
+                              <mat-label>Cena</mat-label>
+                              <input matInput placeholder="cena" currencyMask formControlName="price"
+                                [options]="{ prefix: 'PLN ', thousands: '.', decimal: ',' }">
+                            </mat-form-field>
+                          </div>
+                          <div class="col-md-3">
+                            <mat-form-field class="w-100">
+                              <mat-label>Dni</mat-label>
+                              <input matInput placeholder="Dni" formControlName="days">
+                            </mat-form-field>
+                          </div>
+                        </div>
+
+                      </div>
+                      <div class="col-remove-price">
+                        <button type="button" class="btn btn-danger btn-sm" (click)="removeGroupPrice(i,j)">
+                          <i class="fas fa-minus"></i>
+                        </button>
+                      </div>
+
+                    </div>
+
+                  </div>
+                </div>
+                <div class="col-remove">
+                  <button type="button" class="btn btn-danger btn-sm" (click)="removeGroup(i)">
+                    <i class="fas fa-minus"></i>
+                  </button>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+
+
+    </form>
+
+
+  </div>
+
+</div>

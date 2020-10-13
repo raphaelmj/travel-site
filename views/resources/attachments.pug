@@ -1,0 +1,68 @@
+extends ../layouts/layout.pug
+
+block header
+    include ../partials/banner-attachments.pug
+    include ../partials/submenu.pug
+    
+block content
+    //- .double-revers-container
+    //-     .row
+    //-         .col-left-double
+    //-             .left-content-db
+    //-                 include ../partials/partners.pug
+    //-         .col-right-double
+    //-             .container
+    //-                 .row
+    //-                     .col-docs
+    //-                         each ag,i in attachments
+    //-                             .row-group
+    //-                                 .col-g-name
+    //-                                     h2.attach-group-t #{ag.groupName}
+    //-                                 .col-files
+    //-                                     each f in ag.files
+    //-                                         .file-el
+    //-                                             .icon
+    //-                                                 img(src="/img/icons/"+f.iconType+"-icon.svg" class="img-fluid")
+    //-                                             .link-name
+    //-                                                 a(href=f.path target="_blank") #{f.name}
+    //- .double-container.attachments
+    //-     .row
+    //-         .col-left-double
+    //-             .container
+    //-                 .row
+    //-                     .col-docs
+    //-                         each ag,i in attachments
+    //-                             .row-group
+    //-                                 .col-g-name
+    //-                                     h2.attach-group-t #{ag.groupName}
+    //-                                 .col-files
+    //-                                     each f in ag.files
+    //-                                         .file-el
+    //-                                             .icon
+    //-                                                 img(src="/img/icons/"+f.iconType+"-icon.svg" class="img-fluid")
+    //-                                             .link-name
+    //-                                                 a(href=f.path target="_blank") #{f.name}
+
+    //-         .col-right-double
+    //-             .right-content-db
+    //-                 include ../partials/partners.pug
+
+    .container-one.attachments
+        .row
+            .col-docs
+                each ag,i in attachments
+                    .row-group
+                        .col-g-name
+                            h2.attach-group-t #{ag.groupName}
+                        .col-files
+                            each f in ag.files
+                                .file-el
+                                    .icon
+                                        img(src="/img/icons/"+f.iconType+"-icon.svg" class="img-fluid")
+                                    .link-name
+                                        a(href=f.path target="_blank") #{f.name}
+
+    include ../partials/partners-horizontal.pug                                            
+block footer
+    include ../partials/contact-section.pug
+    include ../partials/pswp.pug

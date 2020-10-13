@@ -1,0 +1,83 @@
+<div class="tree-element">
+
+  <button type="button" class="btn btn-light" (click)="addEmptyItemAsRoot()"><i class="fas fa-plus"></i> Dodaj nowy link
+    pierwszego rzędu</button>
+
+  <mat-tree [dataSource]="dataSource" [treeControl]="treeControl">
+    <!-- This is the tree node template for leaf nodes -->
+    <mat-tree-node *matTreeNodeDef="let node" matTreeNodePadding>
+      <!-- use a disabled button to provide padding for tree leaf -->
+      <button class="btn-state" disabled>
+
+      </button>
+
+      <div *ngIf="!node.editLink" class="left-padding-more right-padding">
+        <app-input-xeditable class="x-edit-view" [xValue]="node.name" [backBundleData]="node.id"
+          [textClass]="'small-text'" (emitSave)="editItemInBase($event)"></app-input-xeditable>
+      </div>
+
+      <div *ngIf="node.editLink" class="left-padding-more right-padding">
+        <app-input-xeditable class="x-edit-view" [xValue]="node.name" [backBundleData]="node.linkId"
+          [textClass]="'small-text'" (emitSave)="addNewItemToBase($event)"></app-input-xeditable>
+      </div>
+
+      <button class="btn btn-light btn-nav-small" *ngIf="!node.isFirst && !node.editLink"
+        (click)="putTop(node.level,node.id)">
+        <i class="fas fa-chevron-up"></i>
+      </button>
+      <button class="btn btn-light btn-nav-small" *ngIf="!node.isLast &&  !node.editLink"
+        (click)="putBottom(node.level,node.id)">
+        <i class="fas fa-chevron-down"></i>
+      </button>
+      <button class="btn btn-light btn-nav-small" *ngIf="!node.editLink" (click)="addNewItem(node)">
+        <i class="fas fa-plus"></i>
+      </button>
+      <button class="btn btn-light btn-nav-small" *ngIf="!node.editLink" (click)="editLink(node)">
+        <i class="far fa-edit"></i>
+      </button>
+      <!-- <button class="btn btn-light btn-nav-small" *ngIf="!node.editLink" (click)="changeParent(node)">
+          <i class="fas fa-child"></i> zmień rodzica
+      </button> -->
+
+      <button class="btn btn-light btn-nav-small" *ngIf="!node.editLink" (click)="removeLink(node)">
+        <i class="fas fa-trash-alt"></i>
+      </button>
+      <button class="btn btn-light btn-nav-small" *ngIf="!node.id" (click)="removeEmptyNode(node)">x</button>
+
+    </mat-tree-node>
+    <!-- This is the tree node template for expandable nodes -->
+    <mat-tree-node *matTreeNodeDef="let node;when: hasChild" matTreeNodePadding>
+      <button class="btn-state" matTreeNodeToggle>
+        <i class="fas fa-chevron-down" *ngIf="treeControl.isExpanded(node)"></i>
+        <i class="fas fa-chevron-right" *ngIf="!treeControl.isExpanded(node)"></i>
+      </button>
+      <div *ngIf="!node.editLink" class="left-padding-more right-padding">
+        <app-input-xeditable class="x-edit-view" [xValue]="node.name" [backBundleData]="node.id"
+          [textClass]="'small-text'" (emitSave)="editItemInBase($event)"></app-input-xeditable>
+      </div>
+      <button class="btn btn-light btn-nav-small" *ngIf="!node.isFirst && !node.editLink"
+        (click)="putTop(node.level,node.id)">
+        <i class="fas fa-chevron-up"></i>
+      </button>
+      <button class="btn btn-light btn-nav-small" *ngIf="!node.isLast && !node.editLink"
+        (click)="putBottom(node.level,node.id)">
+        <i class="fas fa-chevron-down"></i>
+      </button>
+      <button class="btn btn-light btn-nav-small" (click)="addNewItem(node)">
+        <i class="fas fa-plus"></i>
+      </button>
+      <button class="btn btn-light btn-nav-small" (click)="editLink(node)">
+        <i class="far fa-edit"></i>
+      </button>
+      <button class="btn btn-light btn-nav-small" (click)="removeLink(node)">
+        <i class="fas fa-trash-alt"></i>
+      </button>
+      <button class="btn btn-light btn-nav-small" *ngIf="!node.id" (click)="removeEmptyNode(node)">x</button>
+      <!-- <button class="btn btn-light btn-nav-small" *ngIf="!node.editLink" (click)="changeParent(node)">
+          <i class="fas fa-child"></i> zmień rodzica
+      </button> -->
+    </mat-tree-node>
+  </mat-tree>
+
+</div>
+<ng-template #popUpTemp></ng-template>

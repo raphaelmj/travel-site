@@ -1,0 +1,103 @@
+.rotor-screen {
+  position: relative;
+  overflow: hidden;
+  min-height: 360px;
+
+  .shadow-over {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.2);
+    z-index: 12;
+  }
+
+  .slide {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 10;
+    opacity: 1;
+  }
+
+
+
+  h2.title-big {
+    position: absolute;
+    color: #FFF;
+    z-index: 15;
+    font-size: 3.2rem;
+    text-shadow: 1px 1px 0 #000;
+    right: -200%;
+    top: 5.6rem;
+    right: calc((100% - 1280px) / 2);
+
+
+  }
+
+
+  h3.title-small {
+    position: absolute;
+    color: #FFF;
+    z-index: 16;
+    font-size: 2rem;
+    text-shadow: 1px 1px 0 #000;
+    right: -200%;
+    top: 9.2rem;
+    right: calc((100% - 1280px) / 2);
+  }
+
+
+  a.btn-link {
+    position: absolute;
+    color: #FFF;
+    z-index: 17;
+    display: table;
+    border: 2px solid #FFF;
+    padding: 9px 35px;
+    text-decoration: none;
+    border-radius: 25px;
+    font-size: 1.4rem;
+    text-shadow: 1px 1px 0 #000;
+    box-shadow: 1px 1px 0 #000;
+    right: -200%;
+    top: 12.3rem;
+    right: calc((100% - 1280px) / 2);
+    transition: 2000ms right;
+
+  }
+
+  .over-all {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 20;
+
+    button.edit-bt {
+      position: absolute;
+      left: 10px;
+      bottom: 10px;
+
+    }
+
+    button.remove-bt {
+      position: absolute;
+      left: 70px;
+      bottom: 10px;
+
+    }
+
+    button.status-bt {
+      position: absolute;
+      left: 130px;
+      bottom: 10px;
+    }
+
+  }
+
+}

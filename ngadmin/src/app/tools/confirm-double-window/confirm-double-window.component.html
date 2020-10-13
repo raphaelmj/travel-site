@@ -1,0 +1,23 @@
+<div class="confirm-window" *ngIf="showConfirm">
+
+  <div class="inside-confirm">
+    <div class="message-cont">
+      <p class="text-{{colorClassString}}">
+        <span [innerHTML]="message"></span>
+      </p>
+    </div>
+
+    <div class="btns-cont">
+      <button type="button" class="btn btn-default" (click)="forget()">
+        Anuluj
+      </button>
+      <button type="button" class="btn btn-{{colorClassString}}" (click)="confirmOne()">
+        {{btnTextOne}}
+      </button>
+      <button type="button" class="btn btn-{{colorClassString}}" (click)="confirmTwo()">
+        {{btnTextTwo}}
+      </button>
+    </div>
+  </div>
+
+</div>

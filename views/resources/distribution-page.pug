@@ -1,0 +1,24 @@
+extends ../layouts/layout.pug
+
+block header
+    include ../partials/banner-attachments.pug
+    include ../partials/submenu.pug
+    
+block content
+    section.distribution
+        .container-one
+            .row
+                .col-d
+                    .row-grid
+                        each l in links
+                            .col
+                                h2 #{l.title}
+                                a(href=l.path)
+                        
+
+    include ../partials/partners-horizontal.pug  
+
+    
+block footer
+    include ../partials/contact-section.pug
+    include ../partials/pswp.pug

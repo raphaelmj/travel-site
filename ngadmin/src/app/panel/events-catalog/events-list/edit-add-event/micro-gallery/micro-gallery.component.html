@@ -1,0 +1,43 @@
+<div class="overshadow" (click)="closeEdit()">
+
+</div>
+
+<div class="edit-area">
+
+  <div class="close-btn" (click)="closeEdit()"><i class="fas fa-times"></i></div>
+
+  <div class="scroll-inside">
+
+    <div class="container-fluid">
+
+      <div class="row">
+        <div class="col-md-12">
+          <ngx-file-drop dropZoneClassName="filedrop" contentClassName="contentDrop" dropZoneLabel="Upuść pliki"
+            accept=".jpg,.jpeg,.png,.PNG,.JPG,.JPEG" (onFileDrop)="dropped($event)">
+          </ngx-file-drop>
+          <hr>
+          <!-- <div *ngFor="let item of currentFileProgress; let i=index">
+            <span class="badge badge-primary">{{item.name}}</span> - <span class="badge badge-success">{{item.progress}}
+              %</span>
+          </div>
+          <hr> -->
+          <div class="image-cnt" id="sortGallery">
+            <div class="col-g" *ngFor="let img of galleryImages;let i = index">
+              <img [src]="apiUrl+img.image" class="img-fluid">
+              <button type="button" class="btn btn-danger btn-sm btn-remove" (click)="removeImage(i)">
+                <i class="fas fa-minus"></i>
+              </button>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+
+
+  </div>
+
+</div>

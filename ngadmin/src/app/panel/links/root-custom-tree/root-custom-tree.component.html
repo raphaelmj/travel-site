@@ -1,0 +1,13 @@
+<div class="row">
+    <div class="col-md-9">
+        <ul cdkDropList (cdkDropListDropped)="drop($event)">
+            <li *ngFor="let item of links" cdkDrag>
+                <app-links-custom-tree [(link)]="item" [parent]="'root'" (emitAddNew)="addNew($event)"></app-links-custom-tree>
+            </li>   
+        </ul>
+    </div>
+    <div class="col-md-3">
+      <pre>{{links|json}}</pre>
+    </div>
+  </div>
+  

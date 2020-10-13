@@ -1,0 +1,48 @@
+<form [formGroup]="formRow">
+  <div class="row-grid">
+    <div class="col-g col-image">
+      <img [src]="apiUrl+event.image" class="img-fluid">
+      <span class="nr">
+        {{event.number}}
+
+      </span>
+      <span class="badge badge-success b-id">
+        id: {{event.id}}
+      </span>
+    </div>
+    <div class="col-g">
+      <h2 class="ev-name">
+        {{event.name}}
+      </h2>
+    </div>
+    <div class="col-g">
+      <!-- {{event.eventSezonType | tourSezon}}
+      {{event.eventType | tourType}} -->
+      <mat-slide-toggle class="example-margin" [color]="'primary'" formControlName="atSezon">
+        Oferta sezonowa
+      </mat-slide-toggle>
+    </div>
+    <div class="col-g">
+      <!-- {{event.status}} -->
+      <mat-slide-toggle class="example-margin" [color]="'primary'" formControlName="status">
+        Dostępność
+      </mat-slide-toggle>
+    </div>
+    <div class="col-g">
+      <ul class="days">
+        <li class="day" *ngFor="let d of event.Days">
+          {{d.daysNumber}}
+        </li>
+        <li>
+          dni
+        </li>
+      </ul>
+    </div>
+    <div class="col-g">
+      <button mat-raised-button color="primary" type="button" (click)="startEditEvent()">
+        <i class="fas fa-edit"></i> Edytuj
+      </button>
+    </div>
+  </div>
+</form>
+<hr>

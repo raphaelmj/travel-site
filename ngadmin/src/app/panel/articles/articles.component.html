@@ -1,0 +1,73 @@
+<!-- <app-drop-files></app-drop-files> -->
+<div class="row">
+  <div class="col-md-12">
+    <button type="button" class="btn btn-lg btn-primary" (click)="addArticle()">
+      Dodaj <i class="fas fa-plus"></i>
+    </button>
+  </div>
+</div>
+<hr>
+<div class="row">
+  <div class="col-12">
+    <app-search-form [qp]="qParams" [categories]="selectListCats" (emitQueryParams)="searchByCriteria($event)">
+    </app-search-form>
+  </div>
+</div>
+<hr>
+<app-pagination [pages]="pagesCount" [current]="current" (emitChange)="getNewCollection($event)"></app-pagination>
+<hr>
+<div class="row">
+  <div class="col-lg-12" *ngFor="let c of articles">
+    <div class="row">
+
+      <div class="col-md-2">
+        <div class="image-cont">
+          <span class="badge badge-success id-badge">
+            id: {{c.id}}
+          </span>
+          <img [src]="appUrl+c.image" *ngIf="c.image && c.image!=''" class="img-fluid">
+          <p *ngIf="!c.image || c.image==''">
+            Brak obrazka
+          </p>
+        </div>
+
+      </div>
+      <div class="col-md-2">
+        <h4>{{c.title}}</h4>
+        <h5 *ngIf="c.category">
+          <span class="badge badge-success">
+            {{c.category?.name}}
+          </span>
+        </h5>
+
+      </div>
+      <div class="col-md-2">
+        <i>{{c.publishedAt | dateTime}}</i>
+      </div>
+      <div class="col-md-2">
+        <button type="button" class="btn btn-primary" (click)="editArticle(c)">
+          <i class="far fa-edit"></i>
+        </button>
+      </div>
+      <div class="col-md-2">
+        <button type="button" class="btn btn-danger" (click)="deleteArticle(c)">
+          <i class="fas fa-trash"></i>
+        </button>
+      </div>
+      <div class="col-md-2">
+        <button type="button" class="btn btn-danger" *ngIf="c.status==0" (click)="changeStatus(c.id,1)">
+          <i class="fas fa-ban"></i>
+        </button>
+        <button type="button" class="btn btn-success" *ngIf="c.status==1" (click)="changeStatus(c.id,0)">
+          <i class="fas fa-check"></i>
+        </button>
+      </div>
+      <div class="col-md-12">
+        <hr>
+      </div>
+    </div>
+  </div>
+</div>
+<app-pagination [pages]="pagesCount" [current]="current" (emitChange)="getNewCollection($event)"></app-pagination>
+<ng-template #editAdd></ng-template>
+<ng-template #remove></ng-template>

@@ -1,0 +1,115 @@
+<div class="overshadow" (click)="closeEdit()">
+
+</div>
+
+<div class="edit-area">
+
+
+  <div class="close-btn" (click)="closeEdit()"><i class="fas fa-times"></i></div>
+
+  <div class="scroll-inside">
+
+    <div class="container-fluid">
+
+      <div class="row">
+        <div class="col-md-12">
+
+          <form [formGroup]="attachForm" (submit)="saveData()">
+
+            <div class="row">
+              <div class="col-md-12">
+                <mat-form-field class="w-100">
+                  <input matInput placeholder="Nazwa grupy" formControlName="groupName">
+                </mat-form-field>
+                <mat-slide-toggle class="example-margin" formControlName="status">
+                  Status
+                </mat-slide-toggle>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-12">
+                <hr>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-md-12">
+                <h4 class="title">Pliki</h4>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-md-12">
+                <label for="filePdf">
+                  Wybierz załącznik
+                  <input type="file" id="filePdf" #filePdf (change)="handleFileInput($event.target.files,'pdf')"
+                    accept=".xlsx,.xls,image/*,.doc, .docx,.pdf,.ods,.odt">
+                </label>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-md-12">
+                <hr>
+              </div>
+            </div>
+
+            <div class="row" formArrayName="files"
+              *ngFor="let item of attachForm.get('files').controls; let i = index;">
+              <div class="col-md-12">
+                <div class="row" [formGroupName]="i">
+                  <div class="col-md-11">
+                    <mat-form-field class="w-100">
+                      <mat-label>Nazwa pliku</mat-label>
+                      <input matInput placeholder="Nazwa pliku" formControlName="name">
+                    </mat-form-field>
+                    <mat-form-field class="w-100">
+                      <mat-label>Ścieżka</mat-label>
+                      <input matInput placeholder="Nazwa pliku" formControlName="path">
+                    </mat-form-field>
+                    <mat-form-field class="w-100">
+                      <mat-label>Typ pliku (ikony)</mat-label>
+                      <mat-select formControlName="iconType">
+                        <mat-option *ngFor="let it of iconTypes" [value]="it.value">
+                          {{it.name}}
+                        </mat-option>
+                      </mat-select>
+                    </mat-form-field>
+                  </div>
+                  <div class="col-md-1">
+                    <button type="button" class="btn btn-danger" (click)="removeAttach(i)">
+                      <i class="fas fa-minus"></i>
+                    </button>
+                  </div>
+                </div>
+                <hr>
+              </div>
+
+            </div>
+
+            <div class="row">
+              <div class="col-md-12">
+                <hr>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-md-12">
+                <button class="btn btn-primary btn-save btn-lg">
+                  Zapisz
+                </button>
+              </div>
+            </div>
+
+
+          </form>
+
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
+<ng-template #imagePopup></ng-template>

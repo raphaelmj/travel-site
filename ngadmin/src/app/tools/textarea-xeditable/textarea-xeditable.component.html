@@ -1,0 +1,17 @@
+<div class="xeditable-cont">
+  <h4 *ngIf="!isEdit">
+    <div class="click-to-edit" (click)="isEdit=true" [innerHtml]="(xValue!=undefined && xValue!='')?xValue:'pusto'">
+    </div>
+  </h4>
+  <div class="edit-data" *ngIf="isEdit">
+    <form>
+      <textarea type="text" class="form-control form-xedit" [(ngModel)]="inputValue" name="inputValue"></textarea>
+      <button type="button" class="btn btn-success" (click)="save()">
+          <i class="fas fa-save"></i>
+      </button>
+      <button type="button" class="btn btn-danger" (click)="cancel()">
+          <i class="fa fa-ban" aria-hidden="true"></i>
+      </button>
+    </form>
+  </div>
+</div>

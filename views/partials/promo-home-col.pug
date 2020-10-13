@@ -1,0 +1,10 @@
+if(promos)
+    .row-col.green
+        .head-col
+            h2 Szczególnie polecane
+        .content-col.promo
+            each p in promos
+                .col-p
+                    h3 #{p.title}
+                    a(href=p.attachFile target="_blank")
+                        img(src=p.image.image, alt="" class="img-fluid")

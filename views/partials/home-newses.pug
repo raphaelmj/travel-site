@@ -1,0 +1,12 @@
+.orange
+    .head-col
+        h2 Wydarzenia
+    .content-col.newses-home   
+        each a in articles
+            .col-news
+                h3.news-title #{a.title}
+                .image
+                    img(src=a.image, alt="" class="img-fluid")
+                .more-btn
+                    a(href="/"+a.category.alias+"/"+a.alias) więcej
+    

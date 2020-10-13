@@ -1,0 +1,48 @@
+.legend-list {
+  // margin-bottom: 32px;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  width: 100%;
+
+
+  .col-attr-el {
+    width: calc(~"(100% - (5 * 16px)) / 5");
+    margin-right: 16px;
+    margin-bottom: 16px;
+
+    .row-element-ico {
+      display: flex;
+      flex-wrap: nowrap;
+      align-items: center;
+
+
+      .c-icon {
+        width: 34px;
+        margin-right: 8px;
+      }
+
+      .c-name {
+        width: calc(~"(100% - 42px)");
+      }
+    }
+
+    .row-element-ico.empty-type {
+      filter: grayscale(1);
+      opacity: 0.8;
+    }
+
+  }
+
+  .col-attr-el.disabled-type {
+    filter: grayscale(1);
+    opacity: 0.8;
+
+    .row-element-ico.empty-type {
+      filter: grayscale(1);
+      opacity: 0.8;
+    }
+
+  }
+}
